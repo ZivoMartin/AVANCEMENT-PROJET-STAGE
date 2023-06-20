@@ -8,23 +8,26 @@ Clics :
 	-remplissement d'un formulaire de type cochage
 
 Keyboard :
-	-Copier puis coller un texte dans un formulaire avec 
+	-Copier puis coller un texte dans un formulaire avec des clics droits
+	-Copier puis coller un texte dans un formulaire avec ctrle+c ctrle+v
 	-Validation d’un formulaire avec un touche du clavier
 	-Est-il possible d'effectuer des actions avec la molette de la souris
 
 Interactions avec un menu :
-	-Ouverture/fermeture de menus survolant 
+	-Ouverture/fermeture de menus survolant javascript
+	-Ouverture/fermeture de menus survolant CSS
 	-Ouverture/fermeture d’un menu de navigation
 	-Ouverture/fermeture d'un menu déroulant
-	-Clics sur un menu survolant
+	-Clics sur un menu survolant javascript
+	-Clics sur un menu survolant CSS
 	-Clics sur un menu ouvert de navigation
 	-Clics sur menu déroulant
 
 Interaction avec un objet vidéo :
 	-Mettre pause
+	-Mettre pause avec la barre espace 
 	-Appuyer sur flèche de droite/flèche de gauche
 	-Avancer la vidéo manuellement
-
 
 Action hors de la page elle-même :
 	-Utiliser la scroll bar
