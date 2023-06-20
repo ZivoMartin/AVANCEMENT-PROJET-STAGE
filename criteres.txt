@@ -1,0 +1,34 @@
+Clics :
+	-Effectuer un simple clic
+	-Effectuer un double clic
+	-Répétitions de clics
+	-Validation d’un formulaire avec un bouton
+	-Utilisation de la scroll barre
+
+Keyboard :
+	-Copier puis coller un texte dans un formulaire avec 
+	-Validation d’un formulaire avec un touche du clavier
+
+Interactions avec un menu :
+	-Ouverture/fermeture de menus survolés 
+	-Ouverture/fermeture d’un menu
+	-Clics sur un menu survolé ouvert
+	-Clics sur un menu ouvert
+
+Interaction avec un objet vidéo :
+	-Mettre pause
+	-Appuyer sur flèche de droite/flèche de gauche
+	-Avancer la vidéo manuellement
+
+
+Action hors de la page elle-même :
+	-Utiliser la scroll bar
+	-Refresh la page
+	-Revenir en arrière avec les flèches
+
+Action sur un item modifiable :
+	-redimensionnement d’un élément 
+        -drag d’un item
+	-drop d’un item
+
+
