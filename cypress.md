@@ -27,4 +27,15 @@
 * The user click on a combo box and selects a subbmenu: Cypress detects the click and the selection in a combo box, but the replayer doesn't replay them.
 
 
+## KeyBoard
 
+### Atomic event
+* onkeydown	: Yes
+* onkeypress : Yes, but its just a spam of onkeydown
+* onkeyup : Yes
+
+### Senarios
+* A user presses the Tab key to navigate within the page
+* A user copies and pastes text using Ctrl+C and Ctrl+V: No
+* A user selects text using Ctrl+A: No
+* A user goes back using Ctrl+Z: No

@@ -27,3 +27,15 @@
 * The user click on a combo box and selects a subbmenu
 
 
+## KeyBoard
+
+### Atomic event
+* onkeydown	A user presses a key
+* onkeypress	A user presses a key
+* onkeyup	A user releases a key
+
+### Senarios
+* A user presses the Tab key to navigate within the page
+* A user copies and pastes text using Ctrl+C and Ctrl+V
+* A user selects text using Ctrl+A
+* A user goes back using Ctrl+Z

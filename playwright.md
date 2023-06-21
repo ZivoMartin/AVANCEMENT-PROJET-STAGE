@@ -25,3 +25,17 @@
 * The user do a copy and paste with the mouse: No 
 
 * The user click on a combo box and selects a subbmenu: Yes
+
+## KeyBoard
+
+### Atomic event
+* onkeydown	: Not all actions, only those that perform a specific task.
+* onkeypress : Not all actions, only those that perform a specific task.
+* onkeyup : Not all actions, only those that perform a specific task.
+
+### Senarios
+* A user presses the Tab key to navigate within the page : Yes
+* Pressing Enter on an element like an href to navigate to the page: No
+* A user copies and pastes text using Ctrl+C and Ctrl+V : Yes
+* A user selects text using Ctrl+A : No 
+* A user goes back using Ctrl+Z : Yes
