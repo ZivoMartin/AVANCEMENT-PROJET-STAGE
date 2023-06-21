@@ -3,7 +3,6 @@ Clics :
 	-Effectuer un double clic
 	-Répétitions de clics
 	-Validation d’un formulaire avec un bouton
-	-Utilisation de la scroll barre
 	-faire la selection d'un texte puis l'effacer
 	-remplissement d'un formulaire de type cochage
 
