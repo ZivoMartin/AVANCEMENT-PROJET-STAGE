@@ -24,7 +24,7 @@
 
 * The user do a copy and paste with the mouse: Yes
 
-
+* The user click on a combo box and selects a subbmenu: Cypress detects the click and the selection in a combo box, but the replayer doesn't replay them.
 
 
 

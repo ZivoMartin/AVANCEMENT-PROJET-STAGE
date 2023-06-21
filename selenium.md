@@ -22,3 +22,5 @@
 * A user hovers their mouse over a hover menu and clicks on a link to another page : Selenium doesn't detect the hover menu.
 
 * The user do a copy and paste with the mouse: No 
+
+* The user click on a combo box and selects a subbmenu:
