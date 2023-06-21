@@ -18,7 +18,7 @@
 * onmouseup: No
 
 ### Senarios
-* A user clicks on a hypertext link, the browser loads the new page, the user then clicks on an element in the new page (2 clicks on two pages)
+* A user clicks on a hypertext link, the browser loads the new page, the user then clicks on an element in the new page (2 clicks on two pages). Yes
 
 * A user hovers their mouse over a hover menu and clicks on a link to another pag: No
 

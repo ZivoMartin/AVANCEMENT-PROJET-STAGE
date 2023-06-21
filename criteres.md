@@ -25,3 +25,5 @@
 * A user hovers their mouse over a hover menu and clicks on a link to another page.
 * The user do a copy and paste with the mouse.
 * The user click on a combo box and selects a subbmenu
+
+
