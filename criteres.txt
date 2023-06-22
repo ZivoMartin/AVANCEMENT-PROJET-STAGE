@@ -1,44 +1,11 @@
-Clics :
-	-Effectuer un simple clic
-	-Effectuer un double clic
-	-Répétitions de clics
-	-Validation d’un formulaire avec un bouton
-	-faire la selection d'un texte puis l'effacer
-	-remplissement d'un formulaire de type cochage
-
-Keyboard :
-	-Copier puis coller un texte dans un formulaire avec des clics droits
-	-Copier puis coller un texte dans un formulaire avec ctrle+c ctrle+v
-	-Validation d’un formulaire avec un touche du clavier
-	-Est-il possible d'effectuer des actions avec la molette de la souris
-
-Interactions avec un menu :
-	-Ouverture/fermeture de menus survolant javascript
-	-Ouverture/fermeture de menus survolant CSS
-	-Ouverture/fermeture d’un menu de navigation
-	-Ouverture/fermeture d'un menu déroulant
-	-Clics sur un menu survolant javascript
-	-Clics sur un menu survolant CSS
-	-Clics sur un menu ouvert de navigation
-	-Clics sur menu déroulant
-
-Interaction avec un objet vidéo :
-	-Mettre pause
-	-Mettre pause avec la barre espace 
-	-Appuyer sur flèche de droite/flèche de gauche
-	-Avancer la vidéo manuellement
-
-Action hors de la page elle-même :
-	-Utiliser la scroll bar
-	-Refresh la page
-	-Revenir en arrière avec les flèches
-	-utilisation de l'historique
-	-suppression de l'historique
-	-télécharger un ressource
-
-Action sur un item modifiable :
-	-redimensionnement d’un élément 
-        -drag d’un item
-	-drop d’un item
-
-
+Mouse:
+	onclick	The user clicks on an element
+	oncontextmenu	The user right-clicks on an element
+	ondblclick	The user double-clicks on an element
+onmousedown	A mouse button is pressed over an element
+onmouseenter	The pointer is moved onto an element
+onmouseleave	The pointer is moved out of an element
+onmousemove	The pointer is moving over an element
+onmouseout	The mouse pointer moves out of an element
+onmouseover	The mouse pointer is moved over an element
+onmouseup	The mouse button is released over an element
