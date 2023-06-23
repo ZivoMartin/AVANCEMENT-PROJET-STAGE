@@ -11,6 +11,8 @@ For all criteria, we'll check whether the script obtains them and then whether t
     * how : open the browser, goto the web site, right click, back
 * ondblclick The user double-clicks on an element
     * how : open the browser, goto the web site, doble click one time on the backgound
+* dobble click on a text
+    * how : we place the mouse on a text, then we dobble click on him.
 * onmouseenter	The pointer is moved onto an element
     * how : we place the mouse on the body 
 * onmouseleave	The pointer is moved out of an element
@@ -56,6 +58,10 @@ For all criteria, we'll check whether the script obtains them and then whether t
     * how : we press the tab key and cycle through all the elements of the web page
     * why :  In the keyboard scenarios, we're trying to test whether it's possible to use keyboard commands like tab.
 
+* Press the Enter key on an item to navigate.
+    * how : press enter on a tab-selected element such as a href to navigate to another page
+    * why : after testing "tab", we test whether we can interact with the selected element
+
 * Copy and paste with keyboard
     * how : select a text with the mouse (if possible), then press control+C, then go to an input field and press control+V
     * why :  In the keyboard scenarios, we're trying to test whether it's possible to use keyboard commands like a copy paste.
@@ -82,3 +88,7 @@ For all criteria, we'll check whether the script obtains them and then whether t
     * why : The select delete function is very important and practical, so it's important to test it.
 
 
+
+## Site used
+
+To carry out the tests, I've decided to use 3 different sites for greater precision, so all 3 must have the necessary functionality to test all the criteria. The difficulty lies in finding 3 pages that have a hover menu, a combo box and a search text field. Most of the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 3 sites with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/) and the last is cdiscount (https://www.cdiscount.com/), not in the ranking of most popular websites, but still a very popular website.
