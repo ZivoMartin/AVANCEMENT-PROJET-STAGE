@@ -10,9 +10,9 @@ For all criteria, we'll check whether the script obtains them and then whether t
 * oncontextmenu	The user right-clicks on an element
     * how : open the browser, goto the web site, right click, back
 * ondblclick The user double-clicks on an element
-    * how : open the browser, goto the web site, doble click one time on the backgound
-* dobble click on a text
-    * how : we place the mouse on a text, then we dobble click on him.
+    * how : open the browser, goto the web site, double click one time on the backgound
+* double click on a text
+    * how : we place the mouse on a text, then we double click on him.
 * onmouseenter	The pointer is moved onto an element
     * how : we place the mouse on the body 
 * onmouseleave	The pointer is moved out of an element
@@ -35,7 +35,7 @@ For all criteria, we'll check whether the script obtains them and then whether t
     * why : Hover menus are very difficult to detect, so it's important to test them. They're different from menus activated by a click.
 
 * Copy and paste with the context menue
-    * how : Select a text with a dobble click, then right click on the selected text. Copy him then pas him in a form.
+    * how : Select a text with a double click, then right click on the selected text. Copy him then pas him in a form.
     * why : Copy and paste is an important feature, and we're going to test whether it's really possible to do this with the mouse and then again with the keyboard.
 
 * The combo box 

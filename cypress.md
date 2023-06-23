@@ -3,11 +3,11 @@
 ### Simple event
 * click : Yes
 * right click: Does not differentiate between a left click and a right click but is capable of using the context menu, such as copy and paste.
-* dbleclick on text: Yes
-* onmouseenter: No
-* onmouseleave: No
-* onmousemove: No
-
+* dbleclick on text: script no (its a simple double click), replay no on all website
+* onmouseenter: script no, replay no on all website
+* onmouseleave: script no, replay no on all website
+* onmousemove: script no, replay no on all website
+ 
 ### Senarios
 * Follow hypertext link: Yes
 
@@ -23,9 +23,9 @@
 ## KeyBoard
 
 ### Atomic event
-* onkeydown	: Yes
-* onkeypress : Yes, but its just a spam of onkeydown
-* onkeyup : Yes
+* onkeydown	: script, yes, replay yes for all website
+* onkeypress : script, its just a spam of onkeydown, replay yes
+* onkeyup : script, Yes, replay yes for all website
 
 ### Senarios
 *  A user presses the Tab key to navigate within the page :
@@ -36,6 +36,6 @@
 
 
 ## Keyboard + mouse
-* fill a text field and submit with the enter key : 
-* fill a text field and submit with the submit button : 
-* Select and delete : 
+* fill a text field and submit with the enter key : Yes for the submit, but the recorder dont understand what are u typing
+* fill a text field and submit with the submit button : Yes for the submit, but the recorder dont understand what are u typing
+* Select and delete : No
