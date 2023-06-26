@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "MartinRecorder",
+    "version": "0.1",
+    "description": "Record user actions",
+    "content_scripts": [
+        {
+          "js": ["recorder.js"],
+          "matches": [
+            "https://*/*"
+          ]
+        }
+      ]
+}

@@ -3,6 +3,7 @@
 ### Simple event
 * click : Yes
 * right click: Does not differentiate between a left click and a right click but is capable of using the context menu, such as copy and paste.
+* dbleclick on text: script yes, replay no on all website
 * dbleclick on text: script no (its a simple double click), replay no on all website
 * onmouseenter: script no, replay no on all website
 * onmouseleave: script no, replay no on all website

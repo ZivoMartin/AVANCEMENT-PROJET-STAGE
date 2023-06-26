@@ -8,7 +8,6 @@
 * onmouseenter: script no, replay no on all website
 * onmouseleave: script no, replay no on all website
 * onmousemove: script no, replay no on all website
-GOOD FOR ALL
 
 ### Senarios
 * Follow hypertext link : script yes, replay yes

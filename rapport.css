@@ -1,0 +1,38 @@
+.tableau{
+    border-collapse: collapse;
+    min-width: 400px;
+    width: 400px;
+    width: auto;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    border: 2px solid midnightblue;
+}
+
+#solo-event{
+    margin: 70px auto;
+}
+
+thead tr{
+    background-color: midnightblue;
+    color: #fff;
+    text-align: left;
+}
+
+th, td{
+    padding: 15px 20px;
+    text-align: center;
+}
+
+tbody tr, td, th{
+    border: 2px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+

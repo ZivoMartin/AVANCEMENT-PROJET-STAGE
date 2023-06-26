@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="rapport.css">
+</head>
+<body>
+    <h1>The recorder/replayer API</h1>
+    <p>A recorder/replayer is an API that first records a sequence of actions performed when interacting with the browser, 
+        then convert this sequence of actions into an API-specific script. Once executed, the script will call the replayer, who will read the script and execute 
+        the actions 
+        one by one on the browser. These test APIs enable fast, automatic testing of a web application 
+        rather than exhaustively testing all the application's functionalities each time it is modified, all you have to do is run the 
+        script, which is very practical.
+        However, recorders have their weaknesses. The recorder listens to JavaScript events and then records them. However, some events 
+        events are difficult for the recorder to detect, leading to problems during replay. The aim of this report is therefore to compare three APIs, namely 
+        Cypress, Selenium and Playwright, and determine the strengths and weaknesses of each API.
+    </p>
+
+    <div id="solo-event">
+        <p>This table compares the management of keyboard and mouse events for each 
+            events for each API. It does not deal with sequences of events (scenarios), but rather with single events.  
+        </p>
+        <table class="tableau">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Cypress</th>
+                    <th>Selenium</th>
+                    <th>Playwright</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Click</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Double click</td>
+                    <td>The recorder has received it, but cannot play it back.</td>
+                    <td>Yes</td>
+                    <td>Playwright can count clicks, but does not get the double-click event.</td>
+                </tr>
+                <tr>
+                    <td>Double click on a text</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td>No to double-click, but yes to more than 2</td>
+                </tr>
+                <tr>
+                    <td>right click</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>context menu</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse enter</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse leave</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse move</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Key down</td>
+                    <td>Yes</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                </tr>
+                <tr>
+                    <td>Key press</td>
+                    <td>Its juste a simple spam of key down event</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                </tr>
+                <tr>
+                    <td>Key up</td>
+                    <td>Yes</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                    <td>Not all actions, only those that perform a specific task</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>To carry out the tests, I've decided to use 4 different sites for greater precision, so all 4 must have the necessary functionality 
+        to test all the criteria. So we had to find 4 sites that had a drop-down menu, a combo box and a search text field. Most of 
+        the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 4 sites 
+        with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is 
+        eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/), the third is 
+        Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal), and the last is cdiscount (https://www.cdiscount.com/), not in the 
+        ranking of most popular websites, but still a very popular website in France.</p>
+</body>
+</html>
