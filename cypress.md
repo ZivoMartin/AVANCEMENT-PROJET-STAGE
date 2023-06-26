@@ -11,13 +11,13 @@
 ### Senarios
 * Follow hypertext link: Yes
 
-* The menus activate by click :
+* The menus activate by click : Not for all the menus.
 
-* The hovers menues : No
+* The hovers menues : No, cypress is unable to access the menu.
 
-* Copy and paste with the context menue: Yes
+* Copy and paste with the context menue: No 
 
-* The combo box: Cypress detects the click and the selection in a combo box, but the replayer doesn't replay them.
+* The combo box: No, he can't active the submenu
 
 
 ## KeyBoard
@@ -28,11 +28,11 @@
 * onkeyup : script, Yes, replay yes for all website
 
 ### Senarios
-*  A user presses the Tab key to navigate within the page :
-* Pressing Enter on an element like an href to navigate to the page :
+*  A user presses the Tab key to navigate within the page : No
+* Pressing Enter on an element like an href to navigate to the page : No
 * A user copies and pastes text using Ctrl+C and Ctrl+V: No
 * A user selects text using Ctrl+A : No
-* A user goes back using Ctrl+Z : No
+* A user goes back using Ctrl+Z : Yes
 
 
 ## Keyboard + mouse

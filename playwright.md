@@ -8,17 +8,18 @@
 * onmouseenter: script no, replay no on all website
 * onmouseleave: script no, replay no on all website
 * onmousemove: script no, replay no on all website
+GOOD FOR ALL
 
 ### Senarios
-* Follow hypertext link : Yes
+* Follow hypertext link : script yes, replay yes
 
-* The menus activate by click : 
+* The menus activate by click : Not for all the menus.
 
 * The hovers menues : No 
 
-* Copy and paste with the context menue :
+* Copy and paste with the context menue : it is possible to do this, but playwright doesn't copy and paste, it simply writes the value of the copied text to the input.
 
-* The combo box : No
+* The combo box : Yes, playwright has a specific method for using the combo box
 
 ## KeyBoard
 

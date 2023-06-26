@@ -10,15 +10,15 @@
 * onmousemove: script no, replay no on all website
 
 ### Senarios
-* Follow hypertext link: It works, but the transitions are very fast. It is necessary to add time.sleep in the script to understand what is being displayed on the screen.
+* Follow hypertext link: script, y, for the replay it works, but the transitions are very fast. It is necessary to add time.sleep in the script to understand what is being displayed on the screen.
 
-* The menus activate by click : Selenium doesn't detect the hover menu.
+* The menus activate by click : Not for all the menus.
 
-* The hovers menues : No 
+* The hovers menues : script, no, replay, no 
 
-* Copy and paste with the context menue :
+* Copy and paste with the context menue : No
 
-* The combo box :
+* The combo box : Yes
 
 ## KeyBoard
 
@@ -30,9 +30,9 @@
 ### Senarios
 * A user presses the Tab key to navigate within the page : Yes
 * Pressing Enter on an element like an href to navigate to the page: Yes
-* A user copies and pastes text using Ctrl+C and Ctrl+V : he didn't detect it but when u paste a text in an input he will type it so it work.
+* A user copies and pastes text using Ctrl+C and Ctrl+V : No
 * A user selects text using Ctrl+A : No
-* A user goes back using Ctrl+Z : Yes
+* A user goes back using Ctrl+Z : 
 
 
 ## Keyboard + mouse

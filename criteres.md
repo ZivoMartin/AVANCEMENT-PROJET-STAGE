@@ -42,6 +42,10 @@ For all criteria, we'll check whether the script obtains them and then whether t
     * how : we click on a combo box, then we select the first possible value, then the second.
     * why : like the hover menues, the combo box are difficult to detect for the recorder. So it's worth testing them..
 
+* The scroll
+    * how : we go to a website with a scroll bar, then use the mouse wheel to scroll.
+    * why : moving around a website with the mouse wheel is a very popular action, so it's worth testing it out
+
 ## KeyBoard
 
 ### Atomic event
