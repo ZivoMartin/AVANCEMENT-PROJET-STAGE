@@ -1,3 +1,8 @@
+body{
+    margin: auto;
+    width: 1000px;
+}
+
 .tableau{
     border-collapse: collapse;
     min-width: 400px;
@@ -36,3 +41,7 @@ h1{
     padding-bottom: 20px;
 }
 
+.event_list{
+    vertical-align: top;
+    display: inline-block;
+}

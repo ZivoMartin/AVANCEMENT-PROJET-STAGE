@@ -14,11 +14,11 @@ For all criteria, we'll check whether the script obtains them and then whether t
 * double click on a text
     * how : we place the mouse on a text, then we double click on him.
 * onmouseenter	The pointer is moved onto an element
-    * how : we place the mouse on the body 
+    * how : we place the mouse on an image 
 * onmouseleave	The pointer is moved out of an element
-    * how : we move out the mouse of the body 
+    * how : we move out the mouse on an image 
 * onmousemove	The pointer is moving over an element
-    * how : we move the mouse on the body
+    * how : we move the mouse on an image
 
 
 ### Scenarios
