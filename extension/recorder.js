@@ -3,8 +3,8 @@ const actions = [];
 let indice_actions = 0;
 let actual_word_type = "";
 let actual_input = null;
-let controle = false
-let in_elt = false
+let controle = false;
+let in_elt = false;
 
 
 function store_event(e){
@@ -25,14 +25,14 @@ function get_selecteur(target){
         if(txt.length <= 100){
             return {selecteur: txt, type: "texte"};
         }else{
-            let txt_result = txt[0]
+            let txt_result = txt[0];
             for(i = 1; i<100; i++){
                 txt_result += txt[i];
             }
             return {selecteur: txt_result, type: "texte"};
         }
     }else{
-        return {selecteur: 'not', type: "not"}
+        return {selecteur: 'not', type: "not"};
     }
 }
 

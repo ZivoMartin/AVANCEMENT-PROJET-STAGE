@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Record and Replay</title>
     <link rel="stylesheet" href="rapport.css">
 </head>
 <body>
-    <h1>The recorder/replayer API</h1>
-    <p>A recorder/replayer is an API that first records a sequence of actions performed when interacting with the browser, 
-        then convert this sequence of actions into an API-specific script. Once executed, the script will call the replayer, who will read the script and execute 
+    <h1>The recorder/replayer software</h1>
+    <p>A recorder/replayer is a software that first records a sequence of actions performed when interacting with the browser, 
+        then converts this sequence of actions into a script.<br> Once executed, the script will call the replayer, which will read the script and execute 
         the actions 
-        one by one on the browser. These test APIs enable fast, automatic testing of a web application 
-        rather than exhaustively testing all the application's functionalities each time it is modified, all you have to do is run the 
-        script, which is very practical.
-        However, recorders have their weaknesses. The recorder listens to JavaScript events and then records them. However, some events 
-        events are difficult for the recorder to detect, leading to problems during replay. The aim of this report is therefore to compare three APIs, namely 
-        Cypress, Selenium and Playwright, and determine the strengths and weaknesses of each API.
+        one by one on the browser. This testing software allows one to quickly and automatically test a web application 
+        rather than having to test all the application's functions each time it is modified. All you have to do is run the script, which is 
+        very convenient. 
+    </p>
+    <p> 
+        However, recorders do have their weaknesses. The recorder listens to JavaScript events and records them.<br> However, some events 
+        are not detected by the recorder, which leads to problems during replay. The aim of this report is therefore to compare three test programs, namely 
+        Cypress, Selenium and Playwright, and to determine the strengths and weaknesses of each.
     </p>
     <div class="img_div">
         <img src="images/cypress.jpg" height="60" class="cy">    
@@ -24,235 +26,255 @@
         <img src="images/playwright.jpg" height="60" class="pl">
     </div>
     <div id="solo-event">
-        <p>This table compares the management of keyboard and mouse events for each 
-            events for each API. It does not deal with sequences of events (scenarios), but rather with single events.  
+        <p>In this study, we first selected JavaScript events divided into two categories: those in the "mouse events" class and those in the "keyboard events" class.
+            This table compares the management of keyboard and mouse events for each software. 
+            It does not deal with sequences of events (scenarios), but rather with single events.
         </p>
         <table class="tableau">
             <thead>
                 <tr>
                     <th>Event</th>
+                    <th>How it's tested</th>
                     <th>Cypress</th>
                     <th>Selenium</th>
                     <th>Playwright</th>
-                    <th>How it's tested</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Click</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
                     <td>open the browser, goto the web site, click one time on the backgound.</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
                 </tr>
                 <tr>
                     <td>Double click</td>
+                    <td>Open the browser, goto the web site, double click one time on the background.</td>
                     <td>The recorder has received it, but cannot play it back.</td>
                     <td>Yes</td>
                     <td>Playwright can count clicks, but does not get the double-click event.</td>
-                    <td>Open the browser, goto the web site, double click one time on the background.</td>
-                </tr>
-                <tr>
-                    <td>Double click on a text</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No to double-click, but yes to more than 2/</td>
-                    <td>We place the mouse on a text, then we double click on him.</td>
                 </tr>
                 <tr>
                     <td>right click</td>
+                    <td>Open the browser, goto the web site, right click.</td>
                     <td>No</td>
                     <td>No</td>
                     <td>Yes</td>
-                    <td>Open the browser, goto the web site, right click.</td>
                 </tr>
                 <tr>
                     <td>context menu</td>
+                    <td>Open a random page, right-click, then refresh the page using the context menu.</td>
                     <td>Yes</td>
                     <td>No</td>
                     <td>No</td>
-                    <td>Open a random page, right-click, then refresh the page using the context menu.</td>
                 </tr>
                 <tr>
                     <td>Mouse enter</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                     <td>We place the mouse on an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Mouse leave</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                     <td>We move out the mouse of an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Mouse move</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                     <td>We move the mouse on an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse out</td>
+                    <td>We move out the mouse of an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse over</td>
+                    <td>We place the mouse on an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Mouse up</td>
+                    <td>We move the mouse on an image.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Key down</td>
+                    <td>We press the 'a' key without selecting an element.</td>
                     <td>Yes</td>
                     <td>Not all actions, only those that perform a specific task.</td>
                     <td>Not all actions, only those that perform a specific task.</td>
-                    <td>We press the 'a' key without selecting an element.</td>
                 </tr>
                 <tr>
                     <td>Key press</td>
+                    <td>We keep pressing the 'a' key without selecting an item.</td>
                     <td>Its juste a simple spam of key down event</td>
                     <td>Not all actions, only those that perform a specific task.</td>
                     <td>Not all actions, only those that perform a specific task.</td>
-                    <td>We keep pressing the 'a' key without selecting an item.</td>
                 </tr>
                 <tr>
                     <td>Key up</td>
+                    <td>We press the 'a' key without selecting an element.</td>
                     <td>Yes</td>
                     <td>Not all actions, only those that perform a specific task.</td>
                     <td>Not all actions, only those that perform a specific task.</td>
-                    <td>We press the 'a' key without selecting an element.</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <p>
-        After testing the capabilities of each API in relation to the events independently of each other, it was necessary to design scenarios 
-        based on these events.  A scenario is a sequence of events that can be performed by a user.
-        We therefore created three different types of scenario: those using only the mouse, those using only the keyboard, and finally those using both the 
-        mouse and the keyboard.
+        After testing the capabilities of each API in relation to events independently of each other, it was necessary to design scenarios 
+        based on these events. <br> A scenario is a sequence of events that can be performed by a user. We therefore created three different types of 
+        scenario: those using only the mouse, those using only the keyboard, and finally those using both the mouse and the keyboard.
     </p>
     <div>
         <table>
             <thead>
                 <tr>
                     <th>Scenario</th>
+                    <th>How it's tested</th>
                     <th>Cypress</th>
                     <th>Selenium</th>
                     <th>Playwright</th>
-                    <th>How it's tested</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Follow hypertext link</td>
+                    <td>Click on a hypertext link, wait the browser to load the new page, click on an element in the new page (2 clicks on two pages).</td>
                     <td>Yes</td>
                     <td>It works, but the transitions are very fast. It is necessary to add time.sleep in the script to understand what is being displayed on the screen.</td>
                     <td>Yes</td>
-                    <td>Click on a hypertext link, wait the browser to load the new page, click on an element in the new page (2 clicks on two pages).</td>
                 </tr>
                 <tr>
                     <td>Click on a button</td>
-                    <td>It depends on the precision of the button selector.</td>
-                    <td>It depends on the precision of the button selector.</td>
-                    <td>It depends on the precision of the button selector.</td>
                     <td>Click on a button, wait for the browser to perform the action associated with the button</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Double click on a text</td>
+                    <td>We place the mouse on a text, then we double click on him.</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td>No to double-click, but yes to more than 2.</td>
                 </tr>
                 <tr>
                     <td>The menus activate by click</td>
+                    <td>A user clicks on a button for activate a menu, then he click on the first link in the menue.</td>
                     <td>Yes, if he succeeds in clicking on the button.</td>
                     <td>Yes, if he succeeds in clicking on the button.</td>
                     <td>Yes, if he succeeds in clicking on the button.</td>
-                    <td>a user click on a button for activate a menu, then he click on the first link in the menue.</td>
                 </tr>
                 <tr>
                     <td>The hovers menues</td>
+                    <td>Hover your mouse over a hover menu, then click on the first link you see to another page.</td>
                     <td>No, Cypress does not support hovers menus.</td>
                     <td>No, Selenium does not support hovers menus.</td>
                     <td>No, Playwright does not support hovers menus.</td>
-                    <td>Hover your mouse over a hover menu, then click on the first link you see to another page.</td>
                 </tr>
                 <tr>
                     <td>Copy and paste with the context menue</td>
+                    <td>Select a text with a double click, then right click on the selected text. Copy him then pas him in a form.</td>
                     <td>No</td>
                     <td>No</td>
                     <td>It is possible to do this, but playwright doesn't copy and paste, it simply writes the value of the copied text to the input</td>
-                    <td>Select a text with a double click, then right click on the selected text. Copy him then pas him in a form.</td>
                 </tr>
                 <tr>
                     <td>The combo box</td>
+                    <td>We click on a combo box, then we select the first possible value, then the second.</td>
                     <td>No, cypress can't active the submenu</td>
                     <td>Yes</td>
                     <td>Yes, playwright has a specific method in the script for using the combo box</td>
-                    <td>We click on a combo box, then we select the first possible value, then the second.</td>
                 </tr>
                 <tr>
                     <td>The scroll</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                     <td>We go to a website with a scroll bar, then use the mouse wheel to scroll.</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Press tab</td>
+                    <td>We press the tab key and cycle through all the elements of the web page.</td>
                     <td>No, but it will be recorded in the script (he just can't replay it).</td>
                     <td>Yes</td>
                     <td>Yes</td>
-                    <td>We press the tab key and cycle through all the elements of the web page.</td>
                 </tr>
                 <tr>
                     <td>Press the Enter key on an item to navigate</td>
+                    <td>Press enter on a tab-selected element such as a href to navigate to another page.</td>
                     <td>No, but it will be recorded in the script (he just can't replay it).</td>
                     <td>Yes</td>
                     <td>No</td>
-                    <td>Press enter on a tab-selected element such as a href to navigate to another page.</td>
                 </tr>
                 <tr>
                     <td>Copy and paste with keyboard</td>
+                    <td>Select a text with the mouse (if possible), then press control+C, then go to an input field and press control+V.</td>
                     <td>No, but it will be recorded in the script (he just can't replay it).</td>
                     <td>No</td>
                     <td>Yes</td>
-                    <td>Select a text with the mouse (if possible), then press control+C, then go to an input field and press control+V.</td>
                 </tr>
                 <tr>
                     <td>Select text with ctrle+A</td>
+                    <td>We go to an input field, then type a random text (like "hello world"), then press control+A and delete the text.</td>
                     <td>No, but it will be recorded in the script (he just can't replay it).</td>
                     <td>No</td>
                     <td>No</td>
-                    <td>We go to an input field, then type a random text (like "hello world"), then press control+A and delete the text.</td>
                 </tr>
                 <tr>
                     <td>Go back with ctrle+Z</td>
+                    <td>We go to an input field, then type a random text (like "hello world"), then we delete the text then we press controle+Z.</td>
                     <td>No, but it will be recorded in the script (he just can't replay it).</td>
                     <td>No</td>
                     <td>Yes</td>
-                    <td>We go to an input field, then type a random text (like "hello world"), then we delete the text then we press controle+Z.</td>
                 </tr>
                 <tr>
                     <td>Fill a text field and submit with the enter key</td>
+                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the "enter" key.</td>
                     <td>Yes for the submit, but the recorder dont understand what are u typing</td>
                     <td>Yes</td>
                     <td>Yes</td>
-                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the "enter" key.</td>
                 </tr>
                 <tr>
                     <td>Fill a text field and submit with the submit button</td>
+                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the submit button.</td>
                     <td>Yes for the submit, but the recorder dont understand what are u typing</td>
                     <td>Yes</td>
                     <td>Yes</td>
-                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the submit button.</td>
                 </tr>
                 <tr>
                     <td>Select and delete</td>
+                    <td>Select a text in a text field with the mouse, then start typing a random text (such as "Hello World"). If the text is correct, the previous test should be replaced by the text you typed.</td>
                     <td>No</td>
                     <td>If you do it, the part of the script where you type is deleted. So on the script it's just a double click and on the replay you see nothing.</td>
                     <td>Yes</td>
-                    <td>Select a text in a text field with the mouse, then start typing a random text (such as "Hello World"). If the text is correct, the previous test should be replaced by the text you typed.</td>
                 </tr>
             </tbody>
         </table>
 
     </div>
     <footer>
-        <p>To carry out the tests, I've decided to use 4 different sites for greater precision, so all 4 must have the necessary functionality 
-            to test all the criteria. So we had to find 4 sites that had a drop-down menu, a combo box and a search text field. Most of 
-            the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 4 sites 
-            with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is 
-            eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/), the third is 
-            Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal), and the last is cdiscount (https://www.cdiscount.com/), not in the 
-            ranking of most popular websites, but still a very popular website in France.
+        <p>To carry out the tests, I decide to use 3 different sites for greater precision, so all 3 must have the necessary functionality to 
+            test all the criteria. So we have to find 3 sites that have a hover menu, a combo box, and a search text field. Most of the other 
+            criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I pick the top 3 sites with 
+            all the features from the official rankings (https://www.similarweb.com/top-websites/) and test on them. So, the first one is 
+            eBay (https://www.ebay.com/), the second is Fandom (https://www.fandom.com/), and the last one is 
+            Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal).
         </p>
     </footer>
 </body>
