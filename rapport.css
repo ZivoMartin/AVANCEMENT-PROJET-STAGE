@@ -1,8 +1,8 @@
-body{
+body {
     margin: auto;
     width: 1000px;
+    font-family: Arial, sans-serif;
 }
-
 .tableau{
     border-collapse: collapse;
     min-width: 400px;
@@ -36,12 +36,32 @@ tbody tr:nth-child(even){
     background-color: #f3f3f3;
 }
 
-h1{
+h1 {
     text-align: center;
     padding-bottom: 20px;
+    color: #333;
+    text-decoration: underline;
 }
 
 .event_list{
     vertical-align: top;
     display: inline-block;
 }
+
+.img_div {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .cy{
+    margin-right: auto; 
+  }
+  
+  .pl {
+    margin-left: auto; 
+  }
+
+  footer{
+    margin-top: 100px;
+  }

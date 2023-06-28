@@ -18,7 +18,11 @@
         events are difficult for the recorder to detect, leading to problems during replay. The aim of this report is therefore to compare three APIs, namely 
         Cypress, Selenium and Playwright, and determine the strengths and weaknesses of each API.
     </p>
-
+    <div class="img_div">
+        <img src="images/cypress.jpg" height="60" class="cy">    
+        <img src="images/selenium.jpg" height="60" class="se">
+        <img src="images/playwright.jpg" height="60" class="pl">
+    </div>
     <div id="solo-event">
         <p>This table compares the management of keyboard and mouse events for each 
             events for each API. It does not deal with sequences of events (scenarios), but rather with single events.  
@@ -140,10 +144,17 @@
                     <td>Click on a hypertext link, wait the browser to load the new page, click on an element in the new page (2 clicks on two pages).</td>
                 </tr>
                 <tr>
+                    <td>Click on a button</td>
+                    <td>It depends on the precision of the button selector.</td>
+                    <td>It depends on the precision of the button selector.</td>
+                    <td>It depends on the precision of the button selector.</td>
+                    <td>Click on a button, wait for the browser to perform the action associated with the button</td>
+                </tr>
+                <tr>
                     <td>The menus activate by click</td>
-                    <td>Not for all menus, for example it works on Wikipedia but not on Cdiscount.</td>
-                    <td>Not for all menus, for example it works on Wikipedia but not on Cdiscount.</td>
-                    <td>Not for all menus, for example it works on Wikipedia but not on Cdiscount.</td>
+                    <td>Yes, if he succeeds in clicking on the button.</td>
+                    <td>Yes, if he succeeds in clicking on the button.</td>
+                    <td>Yes, if he succeeds in clicking on the button.</td>
                     <td>a user click on a button for activate a menu, then he click on the first link in the menue.</td>
                 </tr>
                 <tr>
@@ -234,13 +245,15 @@
         </table>
 
     </div>
-    <p>To carry out the tests, I've decided to use 4 different sites for greater precision, so all 4 must have the necessary functionality 
-        to test all the criteria. So we had to find 4 sites that had a drop-down menu, a combo box and a search text field. Most of 
-        the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 4 sites 
-        with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is 
-        eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/), the third is 
-        Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal), and the last is cdiscount (https://www.cdiscount.com/), not in the 
-        ranking of most popular websites, but still a very popular website in France.
-    </p>
+    <footer>
+        <p>To carry out the tests, I've decided to use 4 different sites for greater precision, so all 4 must have the necessary functionality 
+            to test all the criteria. So we had to find 4 sites that had a drop-down menu, a combo box and a search text field. Most of 
+            the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 4 sites 
+            with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is 
+            eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/), the third is 
+            Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal), and the last is cdiscount (https://www.cdiscount.com/), not in the 
+            ranking of most popular websites, but still a very popular website in France.
+        </p>
+    </footer>
 </body>
 </html>

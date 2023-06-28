@@ -1,16 +1,16 @@
 console.log('I am running');
 const actions = [];
-let i = 0;
+let indice_actions = 0;
 let actual_word_type = "";
 let actual_input = null;
 let controle = false
+let in_elt = false
 
 
 function store_event(e){
     selecteur = get_selecteur(e.target)
-    actions[i] = {type: e.type, selecteur: selecteur.selecteur, type_selecteur: selecteur.type, type_target: e.target.tagName, arbre: get_arbre(e.target)};
-    console.log(actions[i]);
-    i += 1;
+    actions[indice_actions] = {type: e.type, selecteur: selecteur.selecteur, type_selecteur: selecteur.type, type_target: e.target.tagName, arbre: get_arbre(e.target)};
+    indice_actions += 1;
 }
 
 function get_selecteur(target){
@@ -18,8 +18,8 @@ function get_selecteur(target){
         return {selecteur: target.id, type: "id"};
     }else if(target.tagName == "INPUT" && target.placeholder != ""){
         return {selecteur: target.placeholder, type: "placeholder"}
-    }else if(target.tagName == "INPUT" && target.value != ""){
-        return {selecteur: target.value, type: "value"}
+    }else if(target.name != null && target.name != ""){
+        return {selecteur: target.name, type: "name"}
     }else if(target.textContent != ""){
         txt = target.textContent;
         if(txt.length <= 100){
@@ -37,17 +37,20 @@ function get_selecteur(target){
 }
 
 function get_arbre(target){
-    result = ""
+    result = []
     elt = target.parentElement;
-    while(elt != null){
-        result = " > " + elt.tagName + result;
+    k = 0;
+    while(elt.tagName != "HTML" && elt.tagName != "BODY"){
+        result[k] = {tagName: elt.tagName, id: elt.id, class: elt.class, nom: target.name};
         elt = elt.parentElement;
+        k = k + 1;
     }
     return result;
 }
 
 document.addEventListener('click', (e) => {
     store_event(e);
+    console.log(actions[indice_actions-1])
     if(e.target.tagName == "INPUT"){
         const name = e.target.name;
         actual_input = name;
@@ -59,6 +62,7 @@ document.addEventListener('dblclick', (e) => {
     store_event(e);
 })
 
+
 document.addEventListener('keyup', (e) => {
     if(e.key == "Control"){
         controle = false;
@@ -66,18 +70,44 @@ document.addEventListener('keyup', (e) => {
     store_event(e);
 })
 document.addEventListener('keydown', (e) => {
-    store_event(e);
     const key = e.key;
+    if(key != "Control"){
+        store_event(e);
+        actions[indice_actions-1].input = actual_input;
+    }
     if(controle && key != "Control"){
-        actions[i-1].key = "controle + " + key;
+        if(key == 'z'){
+            actions.pop();
+            let j = actions.length - 1;
+            while(actions[j].type == "mousemove"){
+                j = j - 1;
+            }
+            actions.splice(j, 1);
+        }else{
+            actions[indice_actions-1].key = "controle + " + key;
+        }
     }else if(key != "Control"){
-        actions[i-1].key = key;
+        actions[indice_actions-1].key = key;
     }else{
         controle = true;
     }
-    actions[i-1].input = actual_input;
 })
 
 document.addEventListener('keypress', (e) => {
     store_event(e);
 })
+
+document.addEventListener('mousemove', (e)=>{
+    const cursorStyle = getComputedStyle(e.target).cursor;
+    if(cursorStyle == 'pointer') {
+        if(!in_elt){
+            in_elt = true;
+            store_event(e)
+            actions[indice_actions-1].mouvement = "enter"
+        }
+    }else if(cursorStyle == 'auto' && in_elt){
+        in_elt = false;
+        store_event(e)
+        actions[indice_actions-1].mouvement = "exit"
+    }
+});
