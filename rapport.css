@@ -42,6 +42,11 @@ h1 {
     color: #333;
     text-decoration: underline;
 }
+h2{
+    padding-bottom: 20px;
+    color: #333;
+    text-decoration: underline;
+}
 
 .event_list{
     vertical-align: top;
@@ -62,6 +67,7 @@ h1 {
     margin-left: auto; 
   }
 
-  footer{
-    margin-top: 100px;
+  .conclusion{
+    margin-top: 20;
+    margin-bottom: 100px;
   }
