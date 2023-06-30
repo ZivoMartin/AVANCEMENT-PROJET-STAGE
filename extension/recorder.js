@@ -6,7 +6,8 @@ let actual_input = null;
 let in_elt = false;
 let blue_word = false;
 let blue_input = false;
-replace = false;
+let replace = false;
+let start = false;  
 
 
 function convert(){
@@ -95,76 +96,6 @@ function get_arbre(target){
     return result;
 }
 
-document.addEventListener('click', (e) => {
-    store_event(e);
-    if(e.target.tagName == "INPUT"){
-        const name = e.target.name;
-        actual_input = name;
-    }else{
-        actual_input = null;
-    }
-    reset_blue();
-})
-
-document.addEventListener('dblclick', (e) => {
-    store_event(e);
-    if(e.target.tagName == 'INPUT'){
-        blue_word = true;
-        blue_input = false;
-    }else{
-        reset_blue();
-    }
-    console.log(blue_word);
-})
-
-
-document.addEventListener('keyup', (e) => {
-    if(replace){
-        store_the_replace();
-        replace = false;
-    }
-    if(e.key == 'y'){
-        convert();
-    }
-    //store_event(e);
-})
-document.addEventListener('keydown', (e) => {
-    const key = e.key;
-    if(actual_input != null){
-        if(blue_word){
-            replace = true;
-            blue_word = false;
-            if(key == "Backspace"){
-                return;
-            }
-        }else if(blue_input){
-            replace = true
-            blue_input = false
-            if(key == "Backspace"){
-                return;
-            }
-        }else if(key == "Backspace"){
-            delete_last_char()
-            return;
-        }
-    }
-    if(!e.ctrlKey){
-        store_event(e);
-        actions[indice_actions-1].input = actual_input;
-        actions[indice_actions-1].key = key;
-    }
-    if(key == 'z' && e.ctrlKey){
-        actions.pop();
-        let j = actions.length - 1;
-        while(actions[j].type == "mousemove"){
-            j = j - 1;
-        }
-        actions.splice(j, 1);
-    }else if(key == 'a' && e.ctrlKey && actual_input != null){
-        blue_input = true;
-    }
-})
-
 function store_the_replace(){
     let value = document.querySelector('input[name="' + actual_input + '"]').value;
     actions[indice_actions] = {type: "replace", selecteur: actual_input, type_selecteur: "name", type_target: "input", controle: false, alt: false, url: window.location.href, input: actual_input, new_value: value};
@@ -180,15 +111,86 @@ function delete_last_char(){
         }
     }
 }
-document.addEventListener('keypress', (e) => {
-    //store_event(e);
-})
 
 function reset_blue(){
     blue_word = false;
     blue_input = false;
 }
 
+document.addEventListener('click', (e) => {
+    if(!start){
+        return;
+    }
+    store_event(e);
+    if(e.target.tagName == "INPUT"){
+        const name = e.target.name;
+        actual_input = name;
+    }else{
+        actual_input = null;
+    }
+    reset_blue();
+})
+
+document.addEventListener('dblclick', (e) => {
+    if(!start){
+        return;
+    }
+    store_event(e);
+    if(e.target.tagName == 'INPUT'){
+        blue_word = true;
+        blue_input = false;
+    }else{
+        reset_blue();
+    }
+    console.log(blue_word);
+})
+
+
+document.addEventListener('keyup', (e) => {
+    if(!start){
+        return;
+    }
+    if(replace){
+        store_the_replace();
+        replace = false;
+        blue_input = false;
+        blue_word = false;
+    }
+    if(e.key == '*'){
+        convert();
+    }
+})
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+    if(!start){
+        if(key == "$"){
+            start = true;
+        }
+        return;
+    }
+    if(actual_input != null){
+        if(blue_word){
+            replace = true;
+            return;
+        }else if(blue_input){
+            replace = true
+            return;
+        }else if(key == "Backspace"){
+            delete_last_char()
+            return;
+        }
+    }
+    if(!e.ctrlKey){
+        store_event(e);
+        actions[indice_actions-1].input = actual_input;
+        actions[indice_actions-1].key = key;
+    }else if(actual_input != null){
+        if(key == 'z' || key == 'v' || key == 'a'){
+            replace = true;
+        }
+    }
+    
+})
 // document.addEventListener('mousemove', (e)=>{
 //     const cursorStyle = getComputedStyle(e.target).cursor;
 //     if(cursorStyle == 'pointer') {
