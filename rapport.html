@@ -284,7 +284,8 @@
         This study will compare the different selection algorithms of the three software packages. To do this, we will visit 10 sites 
         from the top 10 most popular sites and make 5 clicks. We will then assign a score to each software package 
         according to the number of clicks accepted. The 10 sites in question will be : Google, Amazon, Openai, Microsoft, Globo, 
-        Wikipedia, Ebay, Dzen, ..
+        Wikipedia, Ebay, Dzen, Office, Samsung. For the selection of the different sites, we simply did not take the sites that require a connection
+        like instagram, facebook... Because in general, the replayer is not accepted by the site.
     </p>
 
     <table>
@@ -305,33 +306,33 @@
             </tr>
             <tr>
                 <th>Amazon</th>
-                <th></th>
+                <th>1</th>
                 <th>1</th>
                 <th>4</th>
             </tr>
             <tr>
                 <th>Openai</th>
-                <th>0</th>
-                <th>0</th>
+                <th>1</th>
+                <th>1</th>
                 <th>5</th>
             </tr>
             <tr>
                 <th>Microsoft</th>
-                <th></th>
+                <th>5</th>
                 <th>3</th>
                 <th>5</th>
             </tr>
             <tr>
                 <th>Globo</th>
-                <th></th>
+                <th>1</th>
                 <th>3</th>
                 <th>4</th>
             </tr>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>Samsung</th>
+                <th>5</th>
+                <th>5</th>
+                <th>4</th>
             </tr>
             <tr>
                 <th>Wikipedia</th>
@@ -340,30 +341,35 @@
                 <th>5</th>
             </tr>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>Office</th>
+                <th>2</th>
+                <th>5</th>
+                <th>1</th>
             </tr>
             <tr>
                 <th>Ebay</th>
-                <th></th>
+                <th>2</th>
                 <th>5</th>
                 <th>3</th>
             </tr>
             <tr>
                 <th>Dzen</th>
-                <th></th>
+                <th>0</th>
                 <th>4</th>
                 <th>4</th>
             </tr>
             <tr>
                 <th>Total</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>25</th>
+                <th>34</th>
+                <th>38</th>
             </tr>
         </tbody>
     </table>
+    <p>
+        So we can see that the best algorithm is that of Playwright. Selenium is not far 
+        and Cypress is third. It should be pointed out that the clicks are not really made at random. 
+        Initially, they are clicks in exposed areas, then in areas that are more complicated to access, such as submenus.
+    </p>
 </body>
 </html>
