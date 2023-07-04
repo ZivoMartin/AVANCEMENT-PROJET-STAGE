@@ -38,6 +38,7 @@
                     <th>Cypress</th>
                     <th>Selenium</th>
                     <th>Playwright</th>
+                    <th>Chrome</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,13 +48,25 @@
                     <td>Yes</td>
                     <td>Yes</td>
                     <td>Yes</td>
+                    <td>
+                        <p>Yes</p> 
+                        <a href="images/Chrome_events/wiki_clic.png"><img src="images/Chrome_events/wiki_clic.png" height="60"></a>
+                        <a href="images/Chrome_events/sams_clic_chrome.png"><img src="images/Chrome_events/sams_clic_chrome.png" height="60"></a>
+                        <a href="images/Chrome_events/ebay_clic.png"><img src="images/Chrome_events/ebay_clic.png" height="60"></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Double click</td>
                     <td>Open the browser, goto the web site, double click one time on the background.</td>
                     <td>The recorder has received it, but cannot play it back.</td>
                     <td>Yes</td>
-                    <td>Playwright can count clicks, but does not get the double-click event.</td>
+                    <td>Yes</td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_events/Wiki_dbclc_chrome.png"><img src="images/Chrome_events/Wiki_dbclc_chrome.png" height="60"></a>
+                        <a href="images/Chrome_events/sams_dbclic_chrome.png"><img src="images/Chrome_events/sams_dbclic_chrome.png" height="60"></a>
+                        <a href="images/Chrome_events/ebay_dbclic.png"><img src="images/Chrome_events/ebay_dbclic.png" height="60"></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>right click</td>
@@ -61,17 +74,18 @@
                     <td>No</td>
                     <td>No</td>
                     <td>Yes</td>
+                    <td> 
+                        <p>No</p>
+                        <a href="images/Chrome_events/wiki_rclic_chrome.png"><img src="images/Chrome_events/wiki_rclic_chrome.png" height="60"></a>
+                        <a href="images/Chrome_events/sams_rc_chrome.png"><img src="images/Chrome_events/sams_rc_chrome.png" height="60"></a>
+                        <a href="images/Chrome_events/.png"><img src="images/Chrome_events/ebay_dbclic.png" height="60"></a>
+                    </td>
                 </tr>
-                <tr>
-                    <td>context menu</td>
-                    <td>Open a random page, right-click, then refresh the page using the context menu.</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                </tr>
+               
                 <tr>
                     <td>Mouse enter</td>
                     <td>We place the mouse on an image.</td>
+                    <td>No</td>
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
@@ -82,10 +96,12 @@
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Mouse move</td>
                     <td>We move the mouse on an image.</td>
+                    <td>No</td>
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
@@ -96,6 +112,7 @@
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Mouse over</td>
@@ -103,10 +120,12 @@
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Mouse up</td>
                     <td>We move the mouse on an image.</td>
+                    <td>No</td>
                     <td>No</td>
                     <td>No</td>
                     <td>No</td>
@@ -165,6 +184,13 @@
                     <td>Yes</td>
                     <td>Yes</td>
                     <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>context menu</td>
+                    <td>Open a random page, right-click, then refresh the page using the context menu.</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
                 </tr>
                 <tr>
                     <td>Double click on a text</td>
@@ -272,7 +298,7 @@
         test all the criteria. So we have to find 3 sites that have a hover menu, a combo box, and a search text field. Most of the other 
         criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I pick the top 3 sites with 
         all the features from the official rankings (https://www.similarweb.com/top-websites/) and test on them. So, the first one is 
-        eBay (https://www.ebay.com/), the second is Fandom (https://www.fandom.com/), and the last one is 
+        eBay (https://www.ebay.com/), the second is Samsung (https://www.samsung.com/fr/), and the last one is 
         Wikipedia (https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal).
     </p>
 

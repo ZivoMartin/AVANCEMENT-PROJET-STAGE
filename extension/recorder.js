@@ -89,7 +89,7 @@ function get_arbre(target){
     k = 0;
     while(elt.tagName != "HTML" && elt.tagName != "BODY"){
         //result[k] = elt.tagName + " | " + elt.id +" | " + elt.class + " | " + target.name;
-        result[k] = target.tagName.toLowerCase();
+        result[k] = elt.tagName.toLowerCase();
         elt = elt.parentElement;
         k = k + 1;
     }
@@ -156,7 +156,7 @@ document.addEventListener('keyup', (e) => {
         blue_input = false;
         blue_word = false;
     }
-    if(e.key == '*'){
+    if(e.key == ''){
         convert();
     }
 })
@@ -165,6 +165,7 @@ document.addEventListener('keydown', (e) => {
     if(!start){
         if(key == "$"){
             start = true;
+            window.localStorage.setItem('trace5', JSON.stringify([]));
         }
         return;
     }
