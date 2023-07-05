@@ -71,3 +71,10 @@ h2{
     margin-top: 20;
     margin-bottom: 100px;
   }
+a{
+    display: block;
+}
+
+td img{
+    width: 200px;
+}
