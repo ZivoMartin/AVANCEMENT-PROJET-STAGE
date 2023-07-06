@@ -3,6 +3,9 @@
     "name": "MartinRecorder",
     "version": "0.1",
     "description": "Record user actions",
+    "action": {
+      "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
           "js": ["recorder.js"],

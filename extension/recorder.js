@@ -1,38 +1,75 @@
 console.log('I am running');
-const actions = [];
-let indice_actions = 0;
-let actual_word_type = "";
-let actual_input = null;
-let in_elt = false;
-let blue_word = false;
-let blue_input = false;
-let replace = false;
-let start = false;  
+let indice_actions;
+let actual_word_type;
+let actual_input;
+let in_elt;
+let blue_word;
+let blue_input;
+let replace;
+let actual_record;
+let the_record;
+let start = JSON.parse(window.localStorage.getItem("start"));
+if(start == null){
+    start = false;
+}
+let indice_record = JSON.parse(window.localStorage.getItem("indice_record"));
+if(window.localStorage.getItem("indice_record") == null){
+    window.localStorage.setItem("indice_record", JSON.stringify(0));
+    indice_record = 0;
+}
+let data = JSON.parse(window.localStorage.getItem("data"));
+if(data != null){
+    make_variable();
+}else{
+    the_record = []
+}
 
+
+function reset_variable(){
+    indice_actions = 0;
+    actual_word_type = "";
+    actual_input = null;
+    in_elt = false;
+    blue_word = false;
+    blue_input = false;
+    replace = false;    
+    the_record = [];
+}
+
+function make_variable(){
+    actual_record = data.actual_record;
+    indice_actions = data.indice_actions;
+    actual_word_type = data.actual_word_type;
+    actual_input = data.actual_input;
+    indice_record = data.indice_record;
+    the_record = JSON.parse(window.localStorage.getItem(actual_record));
+}
 
 function convert(){
-    if(actions.length == 1){
+    the_record.pop()
+    indice_actions -= 1;
+    update_record();
+    if(the_record.length == -1){
         return;
     }
-    actions.pop()
-    txt = "mr = require('mr');\ntest('my_test', () => { mr.goto('"+actions[0].url+"' );\n";
-    for(i = 0; i<actions.length; i++){
-        if(i != 0 && actions[i].url != actions[i-1].url){
-            txt += "mr.tcheckUrlEqual('"+actions[i].url+"');\n"
+    txt = "mr = require('mr');\ntest('my_test', () => { mr.goto('"+the_record[0].url+"' );\n";
+    for(i = 0; i<the_record.length; i++){
+        if(i != 0 && the_record[i].url != the_record[i-1].url){
+            txt += "mr.checkUrlEqual('"+the_record[i].url+"');\n"
         }
-        txt += "mr.getBy"+actions[i].type_selecteur+"("+actions[i].type_target+"{'"+actions[i].selecteur+"'})."
-        if(actions[i].type == "replace"){
-            txt += "replace("+actions[i].new_value+");\n";
-        }else if(actions[i].type == "keydown" && actions[i].input != null){
-            if(actions[i].controle){
-                txt += "type(Control+"+actions[i].key+");\n"
-            }else if(actions[i].alt){
-                txt += "type(Alt+"+actions[i].key+");\n"
+        txt += "mr.getBy"+the_record[i].type_selecteur+"("+the_record[i].type_target+"{'"+the_record[i].selecteur+"'})."
+        if(the_record[i].type == "replace"){
+            txt += "replace("+the_record[i].new_value+");\n";
+        }else if(the_record[i].type == "keydown"){
+            if(the_record[i].controle){
+                txt += "type(Control+"+the_record[i].key+");\n"
+            }else if(the_record[i].alt){
+                txt += "type(Alt+"+the_record[i].key+");\n"
             }else{
-                txt += "type("+actions[i].key+");\n";
+                txt += "type("+the_record[i].key+");\n";
             }
         }else{
-            txt += actions[i].type+"();\n"
+            txt += the_record[i].type+"();\n"
         }
     }
     download(txt)
@@ -50,14 +87,15 @@ function download(txt){
 
 function store_event(e){
     selecteur = get_selecteur(e.target)
-    actions[indice_actions] = {type: e.type, selecteur: selecteur.selecteur, type_selecteur: selecteur.type, type_target: e.target.tagName.toLowerCase(), controle: false, alt: false, url: window.location.href};
+    the_record[indice_actions] = {type: e.type, selecteur: selecteur.selecteur, type_selecteur: selecteur.type, type_target: e.target.tagName.toLowerCase(), controle: false, alt: false, url: window.location.href};
     if(e.ctrlKey){
-        actions[indice_actions].controle = true;
+        the_record[indice_actions].controle = true;
     }
     if(e.altKey){
-        actions[indice_actions].alt = true;
+        the_record[indice_actions].alt = true;
     }
     indice_actions += 1;
+    update_record()
 }
 
 function get_selecteur(target){
@@ -98,18 +136,20 @@ function get_arbre(target){
 
 function store_the_replace(){
     let value = document.querySelector('input[name="' + actual_input + '"]').value;
-    actions[indice_actions] = {type: "replace", selecteur: actual_input, type_selecteur: "name", type_target: "input", controle: false, alt: false, url: window.location.href, input: actual_input, new_value: value};
+    the_record[indice_actions] = {type: "replace", selecteur: actual_input, type_selecteur: "name", type_target: "input", controle: false, alt: false, url: window.location.href, input: actual_input, new_value: value};
     indice_actions += 1;
+    update_record()
 }
 
 function delete_last_char(){
-    let i = actions.length()
+    let i = the_record.length()
     while(i>=0){
-        if(actions[i].type == 'keypress' && actions[i].input == actual_input){
-            actions.splice(i, 1)
+        if(the_record[i].type == 'keypress' && the_record[i].input == actual_input){
+            the_record.splice(i, 1)
             return;
         }
     }
+    update_record();
 }
 
 function reset_blue(){
@@ -117,8 +157,41 @@ function reset_blue(){
     blue_input = false;
 }
 
+function create_new_record(title){
+    actual_record = title;
+    window.localStorage.setItem("indice_record", JSON.parse(window.localStorage.getItem("indice_record")) + 1);
+    update_record();
+}
+
+function update_record(){
+    window.localStorage.setItem("data", JSON.stringify({actual_record: actual_record, actual_input: actual_input, actual_word_type: actual_word_type, indice_actions: indice_actions, indice_record: indice_record}));
+    window.localStorage.setItem("record"+indice_record, JSON.stringify(the_record));
+}
+
+function clear_data(){
+    window.localStorage.clear();
+    the_record = [];
+    reset_variable();
+    window.localStorage.setItem("indice_record", 0);
+    indice_record = 1;
+}
+
+function test_is_recording(){
+    if(JSON.parse(localStorage.getItem("start")) && actual_record == null){
+        reset_variable();
+        indice_record += 1;
+        actual_record = "record" + indice_record;
+        create_new_record("record"+indice_record);
+        return true;
+    }else if(actual_record != null){
+        reset_variable();
+    }
+    return false;
+}
+
 document.addEventListener('click', (e) => {
     if(!start){
+        console.log(window.localStorage.getItem("start"))
         return;
     }
     store_event(e);
@@ -142,7 +215,6 @@ document.addEventListener('dblclick', (e) => {
     }else{
         reset_blue();
     }
-    console.log(blue_word);
 })
 
 
@@ -156,19 +228,15 @@ document.addEventListener('keyup', (e) => {
         blue_input = false;
         blue_word = false;
     }
-    if(e.key == ''){
+    if(e.key == '*'){
         convert();
     }
 })
 document.addEventListener('keydown', (e) => {
-    const key = e.key;
     if(!start){
-        if(key == "$"){
-            start = true;
-            window.localStorage.setItem('trace5', JSON.stringify([]));
-        }
         return;
     }
+    const key = e.key;
     if(actual_input != null){
         if(blue_word){
             replace = true;
@@ -183,8 +251,13 @@ document.addEventListener('keydown', (e) => {
     }
     if(!e.ctrlKey){
         store_event(e);
-        actions[indice_actions-1].input = actual_input;
-        actions[indice_actions-1].key = key;
+        if(actual_input != null){
+            the_record[indice_actions-1].input = actual_input;
+        }else{
+            the_record[indice_actions-1].input = "None";
+        }
+        the_record[indice_actions-1].key = key;
+        update_record();
     }else if(actual_input != null){
         if(key == 'z' || key == 'v' || key == 'a'){
             replace = true;
@@ -192,17 +265,33 @@ document.addEventListener('keydown', (e) => {
     }
     
 })
+
+window.addEventListener('message', (e)=> {
+      var data = e.data;      
+      if(data = "convert"){
+        convert();
+      }else if(data = "start"){
+        start = true
+        window.localStorage.setItem("start", JSON.stringify(true));
+      }else if(data = "reset"){
+        clear_data();
+      }else if(data = "false"){
+        
+      }
+  });
+
+
 // document.addEventListener('mousemove', (e)=>{
 //     const cursorStyle = getComputedStyle(e.target).cursor;
 //     if(cursorStyle == 'pointer') {
 //         if(!in_elt){
 //             in_elt = true;
 //             store_event(e)
-//             actions[indice_actions-1].mouvement = "enter"
+//             the_record[indice_actions-1].mouvement = "enter"
 //         }
 //     }else if(cursorStyle == 'auto' && in_elt){
 //         in_elt = false;
 //         store_event(e)
-//         actions[indice_actions-1].mouvement = "exit"
+//         the_record[indice_actions-1].mouvement = "exit"
 //     }
 // });
