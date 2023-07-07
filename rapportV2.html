@@ -17,22 +17,22 @@
     </p>
     <p> 
         However, recorders do have their weaknesses. The recorder listens to JavaScript events and records them.<br> However, some events 
-        are not detected by the recorder, which leads to problems during replay. The aim of this report is therefore to compare three test programs, namely 
-        Cypress, Selenium and Playwright, and to determine the strengths and weaknesses of each. Let's add that we separate keyboard events into two categories: 
-        those performed in a vacuum (when pressing the key does nothing) and those performed in an input field.
+        are not detected by the recorder, which leads to problems during replay. The aim of this report is therefore to compare four test programs: 
+        Cypress, Selenium, Playwright and Chrome, and to determine the strengths and weaknesses of each. 
     </p>
     <div class="img_div">
         <img src="images/cypress.jpg" height="60" class="cy">    
         <img src="images/selenium.jpg" height="60" class="se">
         <img src="images/playwright.jpg" height="60" class="pl">
+        <img src="images/chrome.jpg" height="60" class="ch">
     </div>
     <div id="solo-event">
         <p>In this study, we first selected JavaScript events divided into two categories: those in the "mouse events" class and those in the "keyboard events" class.
-            This table compares the management of keyboard and mouse events for each software. 
+            This table compares the management of keyboard and mouse events for each software. Let's add that we separate keyboard events into two categories: 
+            those performed in a vacuum (when pressing the key does nothing) and those performed in an input field.
             It does not deal with sequences of events (scenarios), but rather with single events. <br>
             To decide whether or not a software application takes a given event into account, after running the test we look in the action history 
-            to see whether the recorder recorded the interaction.
-            If the recorder has recorded the interaction. In this part, the replayer is not taken into account.
+            to see whether the recorder recorded the interaction. In this part, the replayer is not taken into account.
         </p>
         <table class="tableau">
             <thead>
@@ -431,5 +431,180 @@
         JavaScript, Python, Julia, etc. However, the ability to export the recording is not taken into account in this study. 
         We therefore need to test two things: firstly, the CSS selection algorithm, and secondly, the quality of the syntax 
         of the Cypress and Playwright scripts.<br>
-
     </p>
+
+    <p>
+        Let's start with CSS selectors. Testing the ability of a given software to obtain the CSS selector is simple. You go to a website, click on an element, 
+        then if you're on Selenium/Chrome you can play it back instantly, otherwise you export the script. If the syntax of the script is wrong, we correct it.
+        To be as precise as possible, we're going to make 50 clicks on 10 different sites and count the number of accepted clicks. The 10 sites in question will be : Google, 
+        Amazon, Openai, Microsoft, Globo, Wikipedia, Ebay, Dzen, Office, Samsung. For the selection of the different sites, we 
+        simply did not take the sites that require a connection
+        like instagram, facebook... Because in general, the replayer is not accepted by the site. 
+    </p>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Site</th>
+                <th>Cypress</th>
+                <th>Selenium</th>
+                <th>Playwright</th>
+                <th>Chrome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Google</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Amazon</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Openai</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Microsoft</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Globo</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Samsung</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Wikipedia</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Office</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Ebay</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Dzen</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <th></th>
+                <th></th>   
+                <th></th>
+                <th></th>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        Now, let's look at the possible syntax problems when generating Playwright and Cypress scripts. It's clear that on this 
+        point, Selenium and Chrome have a big advantage with their instant proofreading system. So let's test to what extent Playwright 
+        and Cypress lack this functionality. We're going to take 10 sites, browse each one and create a very long script. We'll then 
+        retrieve this script and run it. If the script runs to completion or if the error is linked to a CSS selector, we'll assume 
+        that the syntax is correct. As far as the ten sites are concerned, we'll use exactly the same as for the CSS selectors.
+    </p>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Site</th>
+                <th>Cypress</th>
+                <th>Playwright</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Google</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Amazon</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Openai</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Microsoft</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Globo</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Samsung</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Wikipedia</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Office</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Ebay</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Dzen</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Total syntax error</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tbody>
+    </table>

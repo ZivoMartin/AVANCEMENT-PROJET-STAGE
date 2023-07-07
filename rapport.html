@@ -17,8 +17,8 @@
     </p>
     <p> 
         However, recorders do have their weaknesses. The recorder listens to JavaScript events and records them.<br> However, some events 
-        are not detected by the recorder, which leads to problems during replay. The aim of this report is therefore to compare three test programs, namely 
-        Cypress, Selenium and Playwright, and to determine the strengths and weaknesses of each.
+        are not detected by the recorder, which leads to problems during replay. The aim of this report is therefore to compare four test programs: 
+        Cypress, Selenium, Playwright and Chrome, and to determine the strengths and weaknesses of each.
     </p>
     <div class="img_div">
         <img src="images/cypress.jpg" height="60" class="cy">    
@@ -30,10 +30,9 @@
             This table compares the management of keyboard and mouse events for each software. 
             It does not deal with sequences of events (scenarios), but rather with single events. <br>
             To decide whether or not a software application takes a given event into account, after running the test we look in the action history 
-            to see whether the recorder recorded the interaction.
-            If the recorder has recorded the interaction. In this part, the replayer is not taken into account.
+            to see whether the recorder recorded the interaction. In this part, the replayer is not taken into account.
         </p>
-        <table class="tableau">
+        <table>
             <thead>
                 <tr>
                     <th>Event</th>
