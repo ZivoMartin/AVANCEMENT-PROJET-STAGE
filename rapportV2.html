@@ -25,11 +25,13 @@
         <img src="images/selenium.jpg" height="60" class="se">
         <img src="images/playwright.jpg" height="60" class="pl">
         <img src="images/chrome.jpg" height="60" class="ch">
+        <img src="images/suricapt.png" height="60" class="sr">
     </div>
     <div id="solo-event">
         <p>In this study, we first selected JavaScript events divided into two categories: those in the "mouse events" class and those in the "keyboard events" class.
             This table compares the management of keyboard and mouse events for each software. Let's add that we separate keyboard events into two categories: 
-            those performed in a vacuum (when pressing the key does nothing) and those performed in an input field.
+            those performed in a vacuum (when pressing the key does nothing) and those performed in an input field, and similarly for
+            hovers, we test on a non-activatable element such as an image, then on an element that activates with a hover.
             It does not deal with sequences of events (scenarios), but rather with single events. <br>
             To decide whether or not a software application takes a given event into account, after running the test we look in the action history 
             to see whether the recorder recorded the interaction. In this part, the replayer is not taken into account.
@@ -43,6 +45,7 @@
                     <th>Selenium</th>
                     <th>Playwright</th>
                     <th>Chrome</th>
+                    <th>Suricapture</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +76,12 @@
                         <a href="images/Chrome_events/sams_clic_chrome.png"><img src="images/Chrome_events/sams_clic_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_clic.png"><img src="images/Chrome_events/ebay_clic.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>Yes</p> 
+                        <a href="images/Suricapture_events/clic_wiki.png"><img src="images/Suricapture_events/clic_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/clic_sams.png"><img src="images/Suricapture_events/clic_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/clic_ebay.png"><img src="images/Suricapture_events/clic_ebay.png" height="60"></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Double click</td>
@@ -101,6 +110,12 @@
                         <a href="images/Chrome_events/sams_dbclic_chrome.png"><img src="images/Chrome_events/sams_dbclic_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_dbclic.png"><img src="images/Chrome_events/ebay_dbclic.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/db_clic_wiki.png"><img src="images/Suricapture_events/db_clic_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/db_clic_sams.png"><img src="images/Suricapture_events/db_clic_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/db_clic_ebay.png"><img src="images/Suricapture_events/db_clic_ebay.png" height="60"></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>right click</td>
@@ -128,6 +143,12 @@
                         <a href="images/Chrome_events/wiki_rclic_chrome.png"><img src="images/Chrome_events/wiki_rclic_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_rc_chrome.png"><img src="images/Chrome_events/sams_rc_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_rc.png"><img src="images/Chrome_events/ebay_rc.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/rc_wiki.png"><img src="images/Suricapture_events/rc_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/rc_sams.png"><img src="images/Suricapture_events/rc_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/rc_ebay.png"><img src="images/Suricapture_events/rc_ebay.png" height="60"></a>
                     </td>
                 </tr>
                
@@ -158,6 +179,12 @@
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Mouse leave</td>
@@ -185,7 +212,13 @@
                         <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_MouseEnter_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
-                    </td>               
+                    </td>  
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>             
                 </tr>
                 <tr>
                     <td>Mouse move</td>
@@ -213,7 +246,13 @@
                         <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_MouseEnter_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
-                    </td>               
+                    </td>  
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>             
                 </tr>
                 <tr>
                     <td>Mouse out</td>
@@ -241,7 +280,13 @@
                         <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_MouseEnter_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
-                    </td>              
+                    </td> 
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>             
                 </tr>
                 <tr>
                     <td>Mouse over</td>
@@ -269,7 +314,13 @@
                         <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_MouseEnter_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
-                    </td>                
+                    </td>  
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>              
                 </tr>
                 <tr>
                     <td>Mouse up</td>
@@ -297,7 +348,47 @@
                         <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_MouseEnter_chrome.png" height="60"></a>
                         <a href="images/Chrome_events/sams_mousenter.png"><img src="images/Chrome_events/sams_mousenter.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_mouseenter.png"><img src="images/Chrome_events/ebay_mouseenter.png" height="60"></a>
-                    </td>               
+                    </td>    
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/mousenter_wiki.png"><img src="images/Suricapture_events/mousenter_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_sams.png"><img src="images/Suricapture_events/mousenter_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_ebay.png"><img src="images/Suricapture_events/mousenter_ebay.png" height="60"></a>
+                    </td>           
+                </tr>
+                <tr>
+                    <td>Mouse hover an elements and active him</td>
+                    <td>We move the mouse over an element that can be activated by hovering over it.</td>
+                    <td>
+                        <p>No</p>
+                        <a href="images/Cypress_events/wiki_mousenter_elt.png"><img src="images/Cypress_events/wiki_mousenter_elt.png" height="60"></a>
+                        <a href="images/Cypress_events/sams_mousenter_elt.png"><img src="images/Cypress_events/sams_mousenter_elt.png" height="60"></a>
+                        <a href="images/Cypress_events/ebay_mousenter_elt.png"><img src="images/Cypress_events/ebay_mousenter_elt.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>No</p>
+                        <a href="images/Selenium_events/wiki_mousenter_elt.png"><img src="images/Selenium_events/wiki_mousenter_elt.png" height="60"></a>
+                        <a href="images/Selenium_events/sams_mousenter_elt.png"><img src="images/Selenium_events/sams_mousenter_elt.png" height="60"></a>
+                        <a href="images/Selenium_events/ebay_mousenter_elt.png"><img src="images/Selenium_events/ebay_mousenter_elt.png" height="60"></a>
+                    </td>                      
+                    <td>
+                        <p>No</p>
+                        <a href="images/Playwright_events/wiki_mousenter_elt.png"><img src="images/Playwright_events/wiki_mousenter_elt.png" height="60"></a>
+                        <a href="images/Playwright_events/sams_mousenter_elt.png"><img src="images/Playwright_events/sams_mousenter_elt.png" height="60"></a>
+                        <a href="images/Playwright_events/ebay_mousenter_elt.png"><img src="images/Playwright_events/ebay_mousenter_elt.png" height="60"></a>
+                    </td>  
+                    <td>
+                        <p>No</p>
+                        <a href="images/Chrome_events/wiki_MouseEnter_chrome.png"><img src="images/Chrome_events/wiki_mousenter_elt.png" height="60"></a>
+                        <a href="images/Chrome_events/sams_mousenter_elt.png"><img src="images/Chrome_events/sams_mousenter_elt.png" height="60"></a>
+                        <a href="images/Chrome_events/ebay_mousenter_elt.png"><img src="images/Chrome_events/ebay_mousenter_elt.png" height="60"></a>
+                    </td>    
+                    <td>
+                        <p>Yes</p> 
+                        <a href="images/Suricapture_events/mouseneter_elt_wiki.png"><img src="images/Suricapture_events/mouseneter_elt_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_elt_sams.png"><img src="images/Suricapture_events/mousenter_elt_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/mousenter_elt_ebay.png"><img src="images/Suricapture_events/mousenter_elt_ebay.png" height="60"></a>
+                    </td>           
                 </tr>
                 <tr>
                     <td>Key down</td>
@@ -326,6 +417,12 @@
                         <a href="images/Chrome_events/sams_kd_ku.png"><img src="images/Chrome_events/sams_kd_ku.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_kdku.png"><img src="images/Chrome_events/ebay_kdku.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/wiki_type.png"><img src="images/Suricapture_events/type_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_sams.png"><img src="images/Suricapture_events/type_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_ebay.png"><img src="images/Suricapture_events/type_ebay.png" height="60"></a>
+                    </td>     
                 </tr>
                 <tr>
                     <td>Key press on an input</td>
@@ -340,13 +437,13 @@
                         <a href="images/Cypress_events/ebay_type.png"><img src="images/Cypress_events/ebay_type.png" height="60"></a>
                     </td>   
                     <td>
-                        <p>No</p>
+                        <p>Yes</p>
                         <a href="images/Selenium_events/wiki_type.png"><img src="images/Selenium_events/wiki_type.png" height="60"></a>
                         <a href="images/Selenium_events/sams_type.png"><img src="images/Selenium_events/sams_type.png" height="60"></a>
                         <a href="images/Selenium_events/ebay_type.png"><img src="images/Selenium_events/ebay_type.png" height="60"></a>
                     </td>                       
                     <td>
-                        <p>No</p>
+                        <p>Yes</p>
                         <a href="images/Playwright_events/wiki_kp_input.png"><img src="images/Playwright_events/wiki_kp_input.png" height="60"></a>
                         <a href="images/Playwright_events/sams_kp_input.png"><img src="images/Playwright_events/sams_kp_input.png" height="60"></a>
                         <a href="images/Playwright_events/ebay_type.png"><img src="images/Playwright_events/ebay_type.png" height="60"></a>
@@ -357,6 +454,12 @@
                         <a href="images/Chrome_events/sams_type.png"><img src="images/Chrome_events/sams_type.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_type.png"><img src="images/Chrome_events/ebay_type.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>Yes</p> 
+                        <a href="images/Suricapture_events/type_input_wiki.png"><img src="images/Suricapture_events/type_input_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_input_sams.png"><img src="images/Suricapture_events/type_input_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_input_ebay.png"><img src="images/Suricapture_events/type_input_ebay.png" height="60"></a>
+                    </td> 
                 </tr>
                 <tr>
                     <td>Key press</td>
@@ -385,6 +488,12 @@
                         <a href="images/Chrome_events/sams_kd_ku.png"><img src="images/Chrome_events/sams_kd_ku.png" height="60"></a>
                         <a href="images/Selenium_events/ebay_kp.png"><img src="images/Selenium_events/ebay_kp.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/wiki_type.png"><img src="images/Suricapture_events/type_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_sams.png"><img src="images/Suricapture_events/type_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_ebay.png"><img src="images/Suricapture_events/type_ebay.png" height="60"></a>
+                    </td> 
                 </tr>
                 <tr>
                     <td>Key up</td>
@@ -413,198 +522,282 @@
                         <a href="images/Chrome_events/sams_kd_ku.png"><img src="images/Chrome_events/sams_kd_ku.png" height="60"></a>
                         <a href="images/Chrome_events/ebay_kdku.png"><img src="images/Chrome_events/ebay_kdku.png" height="60"></a>
                     </td>
+                    <td>
+                        <p>No</p> 
+                        <a href="images/Suricapture_events/wiki_type.png"><img src="images/Suricapture_events/type_wiki.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_sams.png"><img src="images/Suricapture_events/type_sams.png" height="60"></a>
+                        <a href="images/Suricapture_events/type_ebay.png"><img src="images/Suricapture_events/type_ebay.png" height="60"></a>
+                    </td> 
                 </tr>
             </tbody>
         </table>
     </div>
 
     <p>
-        Now that we know which events are taken into account by each recorder, it's easy to determine
-        whether or not a given scenario is recordable: if we take X to be a scenario and (x1, x2, ... , xn) to be the set of events 
-        included in X, X is recordable if x1, x2, ..., xn are all events taken into account by the recorder. So let's look at the second part of these tools, replay.<br>
-        If we assume that the recording only contains 
-        only actions taken into account by the software, there are only two possible causes of failure. The first is likely to 
-        to occur in every program, and concerns CSS selectors. A bad selector will result in a bad replay.<br>
-        The second cause of error is likely to occur only on Cypress and Playwright, and involves incorrect syntax in the 
-        script. This problem does not arise in Selenium/Chrome, as these two programs have an instant replay option 
-        which does not involve scripting. <br>However, it is possible to export a sequence of interactions to a script in 
-        JavaScript, Python, Julia, etc. However, the ability to export the recording is not taken into account in this study. 
-        We therefore need to test two things: firstly, the CSS selection algorithm, and secondly, the quality of the syntax 
-        of the Cypress and Playwright scripts.<br>
+        now that we know which events can be recorded for each software package, we're going to look at the scenarios. First, we're
+        going to test the recording software. To do this, we will draw up a list of scenarios and then record them. A scenario is a 
+        sequence of events. For example, making two clicks. If a scenario contains an event that cannot be recorded, we can say that 
+        the software will be unable to record the scenario. We are therefore going to draw up a list of scenarios that will be used to 
+        perform the JavaScript events tested in the first part of the study. We will then record the scenario with each piece of 
+        software capable of recording the events that make up the scenario. If the recording software shows us the correct sequence 
+        of actions, then the scenario is recordable. This part of the study does not call into question the replay capabilities of 
+        each program, but rather the recording capabilities. For each scenario, we will use the same 3 sites as in the first part of the 
+        study. 
     </p>
-
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>How it's tested</th>
+                    <th>Cypress</th>
+                    <th>Selenium</th>
+                    <th>Playwright</th>
+                    <th>Chrome</th>
+                    <th>Suricapture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Follow hypertext link</td>
+                    <td>Click on a hypertext link, wait the browser to load the new page, click on an element in the new page (2 clicks on two pages).</td>
+                    <td>
+                        <p>No (1/3)</p>
+                        <a href="images/Cypress_scenar/wiki_hyperlink.png"><img src="images/Cypress_scenar/wiki_hyperlink.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_hyperlink.png"><img src="images/Cypress_scenar/sams_hyperlink.png" height="60"></a>
+                        <a href="images/Cypress_scenar/ebay_hyperlink.png"><img src="images/Cypress_scenar/ebay_hyperlink.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_hyperlink.png"><img src="images/Selenium_scenar/wiki_hyperlink.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_hyperlink.png"><img src="images/Selenium_scenar/sams_hyperlink.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_hyperlink.png"><img src="images/Selenium_scenar/ebay_hyperlink.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Playwright_scenar/wiki_hyperlink.png"><img src="images/Playwright_scenar/wiki_hyperlink.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_hyperlink.png"><img src="images/Playwright_scenar/sams_hyperlink.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_hyperlink.png"><img src="images/Playwright_scenar/ebay_hyperlink.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_hyperlink.png"><img src="images/Chrome_scenar/wiki_hyperlink.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_hyperlink.png"><img src="images/Chrome_scenar/sams_hyperlink.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_hyperlink.png"><img src="images/Chrome_scenar/ebay_hyperlink.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_hyperlink.png"><img src="images/Suricapture_scenar/wiki_hyperlink.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_hyperlink.png"><img src="images/Suricapture_scenar/sams_hyperlink.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_hyperlink.png"><img src="images/Suricapture_scenar/ebay_hyperlink.png" height="60"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>context menu</td>
+                    <td>Open a random page, right-click, then refresh the page using the context menu.</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>
+                        <p>No</p>
+                        <a href="images/Playwright_scenar/wiki_rc.png"><img src="images/Playwright_scenar/wiki_rc.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_rc.png"><img src="images/Playwright_scenar/sams_rc.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_rc.png"><img src="images/Playwright_scenar/ebay_rc.png" height="60"></a>
+                    </td>
+                    <td>/</td>
+                    <td>/</td>
+                </tr>
+                <tr>
+                    <td>The menus activate by click</td>
+                    <td>A user clicks on a button for activate a menu, then he click on the first link in the menue.</td>
+                    <td>
+                        <p>No (1/3)</p>
+                        <a href="images/Cypress_scenar/wiki_menu.png"><img src="images/Cypress_scenar/wiki_menu.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_menu.png"><img src="images/Cypress_scenar/sams_menu.png" height="60"></a>
+                        <a href="images/Cypress_scenar/ebay_menu.png"><img src="images/Cypress_scenar/ebay_menu.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_menu.png"><img src="images/Selenium_scenar/wiki_menu.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_menu.png"><img src="images/Selenium_scenar/sams_menu.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_menu.png"><img src="images/Selenium_scenar/ebay_menu.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Playwright_scenar/wiki_menu.png"><img src="images/Playwright_scenar/wiki_menu.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_menu.png"><img src="images/Playwright_scenar/sams_menu.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_menu.png"><img src="images/Playwright_scenar/ebay_menu.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_menu.png"><img src="images/Chrome_scenar/wiki_menu.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_menu.png"><img src="images/Chrome_scenar/sams_menu.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_menu.png"><img src="images/Chrome_scenar/ebay_menu.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_menu.png"><img src="images/Suricapture_scenar/wiki_menu.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_menu.png"><img src="images/Suricapture_scenar/sams_menu.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_menu.png"><img src="images/Suricapture_scenar/ebay_menu.png" height="60"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>The hovers menues</td>
+                    <td>Hover your mouse over a hover menu, then click on the first link you see to another page.</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_hover.png"><img src="images/Suricapture_scenar/wiki_hover.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_hover.png"><img src="images/Suricapture_scenar/sams_hover.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_hover.png"><img src="images/Suricapture_scenar/ebay_hover.png" height="60"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>The combo box</td>
+                    <td>We click on a combo box, then we select the first possible value, then the second.</td>
+                    <td>
+                        <p>No (1/3)</p>
+                        <a href="images/Cypress_scenar/wiki_combo.png"><img src="images/Cypress_scenar/wiki_combo.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_combo.png"><img src="images/Cypress_scenar/sams_combo.png" height="60"></a>
+                        <a href="images/Cypress_scenar/ebay_combo.png"><img src="images/Cypress_scenar/ebay_combo.png" height="60"></a>
+                    </td>    
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_combo.png"><img src="images/Selenium_scenar/wiki_combo.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_combo.png"><img src="images/Selenium_scenar/sams_combo.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_combo.png"><img src="images/Selenium_scenar/ebay_combo.png" height="60"></a>
+                    </td>                    
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Playwright_scenar/wiki_combo.png"><img src="images/Playwright_scenar/wiki_combo.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_combo.png"><img src="images/Playwright_scenar/sams_combo.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_combo.png"><img src="images/Playwright_scenar/ebay_combo.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_combo.png"><img src="images/Chrome_scenar/wiki_combo.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_combo.png"><img src="images/Chrome_scenar/sams_combo.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_combo.png"><img src="images/Chrome_scenar/ebay_combo.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_combo.png"><img src="images/Suricapture_scenar/wiki_combo.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_combo.png"><img src="images/Suricapture_scenar/sams_combo.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_combo.png"><img src="images/Suricapture_scenar/ebay_combo.png" height="60"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Press tab then press enter key for navigate</td>
+                    <td>We press the tab key and cycle through 3 elements on the website, then press the enter key for navigate.</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_tab.png"><img src="images/Chrome_scenar/wiki_tab.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_tab.png"><img src="images/Chrome_scenar/sams_tab.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_tab.png"><img src="images/Chrome_scenar/ebay_tab.png" height="60"></a>
+                    </td>
+                    <td>/</td>
+                </tr>
+                <tr>
+                    <td>Fill a text field and submit with the enter key</td>
+                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the "enter" key.</td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Cypress_scenar/wiki_submitenter.png"><img src="images/Cypress_scenar/wiki_submitenter.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_submitenter.png"><img src="images/Cypress_scenar/sams_submitenter.png" height="60"></a>
+                        <a href="images/Cypress_scenar/ebay_submitenter.png"><img src="images/Cypress_scenar/ebay_submitenter.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_submitenter.png"><img src="images/Selenium_scenar/wiki_submitenter.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_submitenter.png"><img src="images/Selenium_scenar/sams_submitenter.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_submitenter.png"><img src="images/Selenium_scenar/ebay_submitenter.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Playwright_scenar/wiki_submitenter.png"><img src="images/Playwright_scenar/wiki_submitenter.png" height="60"></a>
+                        <a href="images/Playwright_scenar/samsung_submitenter.png"><img src="images/Playwright_scenar/sams_submitenter.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_submitenter.png"><img src="images/Playwright_scenar/ebay_submitenter.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_submitenter.png"><img src="images/Chrome_scenar/wiki_submitenter.png" height="60"></a>
+                        <a href="images/Chrome_scenar/samsung_submitenter.png"><img src="images/Chrome_scenar/samsung_submitenter.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_submitenter.png"><img src="images/Chrome_scenar/ebay_submitenter.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_submitenter.png"><img src="images/Suricapture_scenar/wiki_submitenter.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_submitenter.png"><img src="images/Suricapture_scenar/sams_submitenter.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_submitenter.png"><img src="images/Suricapture_scenar/ebay_submitenter.png" height="60"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fill a text field and submit with the submit button</td>
+                    <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the submit button.</td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Cypress_scenar/wiki_submitclic.png"><img src="images/Cypress_scenar/wiki_submitclic.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_submitclic.png"><img src="images/Cypress_scenar/sams_submitclic.png" height="60"></a>
+                        <a href="images/Cypress_scenar/ebay_submitclic.png"><img src="images/Cypress_scenar/ebay_submitclic.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_submitclic.png"><img src="images/Selenium_scenar/wiki_submitclic.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_submitclic.png"><img src="images/Selenium_scenar/sams_submitclic.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_submitclic.png"><img src="images/Selenium_scenar/ebay_submitclic.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Playwright_scenar/wiki_submitclic.png"><img src="images/Playwright_scenar/wiki_submitclic.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_submitclic.png"><img src="images/Playwright_scenar/sams_submitclic.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_submitclic.png"><img src="images/Playwright_scenar/ebay_submitclic.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Chrome_scenar/wiki_submitclic.png"><img src="images/Chrome_scenar/wiki_submitclic.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_submitclic.png"><img src="images/Chrome_scenar/sams_submitclic.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_submitclic.png"><img src="images/Chrome_scenar/ebay_submitclic.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Suricapture_scenar/wiki_submitclic.png"><img src="images/Suricapture_scenar/wiki_submitclic.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_submitclic.png"><img src="images/Suricapture_scenar/sams_submitclic.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_submitclic.png"><img src="images/Suricapture_scenar/ebay_submitclic.png" height="60"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
     <p>
-        Let's start with CSS selectors. Testing the ability of a given software to obtain the CSS selector is simple. You go to a website, click on an element, 
-        then if you're on Selenium/Chrome you can play it back instantly, otherwise you export the script. If the syntax of the script is wrong, we correct it.
-        To be as precise as possible, we're going to make 50 clicks on 10 different sites and count the number of accepted clicks. The 10 sites in question will be : Google, 
-        Amazon, Openai, Microsoft, Globo, Wikipedia, Ebay, Dzen, Office, Samsung. For the selection of the different sites, we 
-        simply did not take the sites that require a connection
-        like instagram, facebook... Because in general, the replayer is not accepted by the site. 
+        We've now finished with the recorders. Up until now, we have been content to test the limits of each recorder, but we 
+        have never evaluated the quality of the replayer. If a recorder fails, for example with an event or series of events that 
+        cannot be recorded by the software, it is obvious that the replay will also fail. For the rest of the study, we will assume 
+        that all recordings are correct and should be replayable. So we will write new scenarios, longer than those in the previous 
+        part, which will be made up of events and scenarios supported by the recorder under test. We will then launch the replay. 
+        If everything goes well, the scenario will be validated. If not, the error will be analysed to understand the flaws in each 
+        replayer.
     </p>
 
 
     <table>
         <thead>
             <tr>
-                <th>Site</th>
+                <th>Scenarios</th>
+                <th>How it's tested</th>
                 <th>Cypress</th>
-                <th>Selenium</th>
                 <th>Playwright</th>
                 <th>Chrome</th>
+                <th>Suricapture</th>
+
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th>Google</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Amazon</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Openai</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Microsoft</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Globo</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Samsung</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Wikipedia</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Office</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Ebay</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Dzen</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <th></th>
-                <th></th>   
-                <th></th>
-                <th></th>
-            </tr>
+        
         </tbody>
     </table>
-    <p>
-        Now, let's look at the possible syntax problems when generating Playwright and Cypress scripts. It's clear that on this 
-        point, Selenium and Chrome have a big advantage with their instant proofreading system. So let's test to what extent Playwright 
-        and Cypress lack this functionality. We're going to take 10 sites, browse each one and create a very long script. We'll then 
-        retrieve this script and run it. If the script runs to completion or if the error is linked to a CSS selector, we'll assume 
-        that the syntax is correct. As far as the ten sites are concerned, we'll use exactly the same as for the CSS selectors.
-    </p>
 
-
-    <table>
-        <thead>
-            <tr>
-                <th>Site</th>
-                <th>Cypress</th>
-                <th>Playwright</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Google</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Amazon</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Openai</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Microsoft</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Globo</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Samsung</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Wikipedia</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Office</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Ebay</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Dzen</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Total syntax error</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </tbody>
-    </table>
+    

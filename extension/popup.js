@@ -12,7 +12,6 @@ if(localStorage.getItem("start") == null){
 button_start.addEventListener('click', ()=>{
     if(button_start.textContent == "start record"){
         button_start.textContent = "end record";
-        console.log(window.location.href)
     }else{
         button_start.textContent = "start record";
     }
