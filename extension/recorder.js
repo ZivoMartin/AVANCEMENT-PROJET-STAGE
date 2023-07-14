@@ -8,6 +8,10 @@ let blue_input; //Permet de savoir si actual input est entierment bleu
 let replace; //Booleen qui s'active quand un input est modifié drastiquement (aprés un double clique par exemple) pour prevenir key up d'enregistrer une action de type replace
 let actual_record; //Si un record est en court, il s'agit de l'indice de ce record, sinon il s'agit de l'indice du dernier record 
 let the_record; //Tableau d'action de l'actuel record
+let record_history = JSON.parse(window.localStorage.getItem("record_history"))
+if(record_history == null){
+    record_history = [];
+}
 let start = JSON.parse(window.localStorage.getItem("start")); //Booleen qui se transmet par le localstorage permettant de savoir si on doit ou non directement commencer a enregistrer les actions
 if(start == null){
     start = false;
@@ -152,10 +156,12 @@ function reset_blue(){
 
 function create_new_record(title){
     indice_record += 1;
-    actual_record = title;
+    actual_record = title;    
     window.localStorage.setItem("indice_record", JSON.stringify(JSON.parse(window.localStorage.getItem("indice_record"))));
     reset_variable();
     update_record();
+    record_history.push(title);
+    window.localStorage.setItem("record_history", JSON.stringify(record_history));
 }
 
 function update_record(){
@@ -265,10 +271,12 @@ document.addEventListener('keydown', (e) => {
 
 
 chrome.runtime.onMessage.addListener(function(msg) {
+    console.log(msg);
     var data = msg.message;    
     if(data == "convert"){
         convert();
     }else if(data == "start"){
+        console.log("hey")
         if(start){
             start = false;
         }else{
