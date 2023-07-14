@@ -1,27 +1,23 @@
 console.log('I am running');
-let indice_actions;
-let actual_word_type;
-let actual_input;
-let in_elt;
-let blue_word;
-let blue_input;
-let replace;
-let actual_record;
-let the_record;
-let start = JSON.parse(window.localStorage.getItem("start"));
+let indice_actions;  //Cette variable represente l'indice de la prochaine action dans le tableau de l'actuel record 
+let actual_word_type; //Cette chaine de charactère représente le mot qui est tapé dans l'actuel input
+let actual_input; 
+let in_elt; //Permet de savoir si on survole un element
+let blue_word; //Permet de savoir si un mot dans un input est actuellement bleu
+let blue_input; //Permet de savoir si actual input est entierment bleu
+let replace; //Booleen qui s'active quand un input est modifié drastiquement (aprés un double clique par exemple) pour prevenir key up d'enregistrer une action de type replace
+let actual_record; //Si un record est en court, il s'agit de l'indice de ce record, sinon il s'agit de l'indice du dernier record 
+let the_record; //Tableau d'action de l'actuel record
+let start = JSON.parse(window.localStorage.getItem("start")); //Booleen qui se transmet par le localstorage permettant de savoir si on doit ou non directement commencer a enregistrer les actions
 if(start == null){
     start = false;
 }
-let indice_record = JSON.parse(window.localStorage.getItem("indice_record"));
-if(window.localStorage.getItem("indice_record") == null){
-    window.localStorage.setItem("indice_record", JSON.stringify(0));
-    indice_record = 0;
-}
-let data = JSON.parse(window.localStorage.getItem("data"));
+let indice_record;
+let data = JSON.parse(window.localStorage.getItem("data")); //recupere les datas de l'actuel record s'il n'existe pas, on initialise.
 if(data != null){
     make_variable();
 }else{
-    the_record = []
+    indice_record = 0;
 }
 
 
@@ -46,10 +42,7 @@ function make_variable(){
 }
 
 function convert(){
-    the_record.pop()
-    indice_actions -= 1;
-    update_record();
-    if(the_record.length == -1){
+    if(the_record.length == 0){
         return;
     }
     txt = "mr = require('mr');\ntest('my_test', () => { mr.goto('"+the_record[0].url+"' );\n";
@@ -158,14 +151,16 @@ function reset_blue(){
 }
 
 function create_new_record(title){
+    indice_record += 1;
     actual_record = title;
-    window.localStorage.setItem("indice_record", JSON.parse(window.localStorage.getItem("indice_record")) + 1);
+    window.localStorage.setItem("indice_record", JSON.stringify(JSON.parse(window.localStorage.getItem("indice_record"))));
+    reset_variable();
     update_record();
 }
 
 function update_record(){
     window.localStorage.setItem("data", JSON.stringify({actual_record: actual_record, actual_input: actual_input, actual_word_type: actual_word_type, indice_actions: indice_actions, indice_record: indice_record}));
-    window.localStorage.setItem("record"+indice_record, JSON.stringify(the_record));
+    window.localStorage.setItem(actual_record, JSON.stringify(the_record));
 }
 
 function clear_data(){
@@ -173,7 +168,7 @@ function clear_data(){
     the_record = [];
     reset_variable();
     window.localStorage.setItem("indice_record", 0);
-    indice_record = 1;
+    indice_record = 0;
 }
 
 function test_is_recording(){
@@ -191,7 +186,6 @@ function test_is_recording(){
 
 document.addEventListener('click', (e) => {
     if(!start){
-        console.log(window.localStorage.getItem("start"))
         return;
     }
     store_event(e);
@@ -230,6 +224,8 @@ document.addEventListener('keyup', (e) => {
     }
     if(e.key == '*'){
         convert();
+    }else if(e.key == "ù"){
+        
     }
 })
 document.addEventListener('keydown', (e) => {
@@ -266,19 +262,24 @@ document.addEventListener('keydown', (e) => {
     
 })
 
-window.addEventListener('message', (e)=> {
-      var data = e.data;      
-      if(data = "convert"){
+
+
+chrome.runtime.onMessage.addListener(function(msg) {
+    var data = msg.message;    
+    if(data == "convert"){
         convert();
-      }else if(data = "start"){
-        start = true
-        window.localStorage.setItem("start", JSON.stringify(true));
-      }else if(data = "reset"){
+    }else if(data == "start"){
+        if(start){
+            start = false;
+        }else{
+            start = true;
+            create_new_record("record"+indice_record);
+        }
+        window.localStorage.setItem("start", JSON.stringify(start));
+    }else if(data == "clear"){
         clear_data();
-      }else if(data = "false"){
-        
-      }
-  });
+    }
+});
 
 
 // document.addEventListener('mousemove', (e)=>{

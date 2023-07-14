@@ -3,15 +3,24 @@
     "name": "MartinRecorder",
     "version": "0.1",
     "description": "Record user actions",
+    "background": {
+      "service_worker": "background.js"
+    },
     "action": {
       "default_popup": "popup.html"
     },
+    "permissions": [
+      "tabs",
+      "activeTab",
+      "storage"
+    ],
     "content_scripts": [
         {
           "js": ["recorder.js"],
           "matches": [
             "https://*/*"
-          ]
+          ],
+          "run_at": "document_end"
         }
       ]
 }
