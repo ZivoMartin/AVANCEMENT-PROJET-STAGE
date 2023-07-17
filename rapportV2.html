@@ -706,7 +706,7 @@
                     <td>Fill a text field and submit with the enter key</td>
                     <td>Click on a text field, then type a random text (like "Hello World"), then submit it with the "enter" key.</td>
                     <td>
-                        <p>Yes</p>
+                        <p>No (0/3)</p>
                         <a href="images/Cypress_scenar/wiki_submitenter.png"><img src="images/Cypress_scenar/wiki_submitenter.png" height="60"></a>
                         <a href="images/Cypress_scenar/sams_submitenter.png"><img src="images/Cypress_scenar/sams_submitenter.png" height="60"></a>
                         <a href="images/Cypress_scenar/ebay_submitenter.png"><img src="images/Cypress_scenar/ebay_submitenter.png" height="60"></a>
@@ -770,33 +770,145 @@
                         <a href="images/Suricapture_scenar/ebay_submitclic.png"><img src="images/Suricapture_scenar/ebay_submitclic.png" height="60"></a>
                     </td>
                 </tr>
+                <tr>
+                    <td>Change tab</td>
+                    <td>Click on a link to open a new tab, then click on an item in the new tab.</td>
+                    <td>
+                        <p></p>
+                        <a href="images/Cypress_scenar/wiki_change_tab.png"><img src="images/wiki_Cypress_scenar/change_tab.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_change_tab.png"><img src="images/sams_Cypress_scenar/change_tab.png" height="60"></a>
+                        <a href="images/Cypress_scenar/sams_change_tab.png"><img src="images/ebay_Cypress_scenar/change_tab.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>Yes</p>
+                        <a href="images/Selenium_scenar/wiki_change_tab.png"><img src="images/Selenium_scenar/wiki_change_tab.png" height="60"></a>
+                        <a href="images/Selenium_scenar/sams_change_tab.png"><img src="images/Selenium_scenar/sams_change_tab.png" height="60"></a>
+                        <a href="images/Selenium_scenar/ebay_change_tab.png"><img src="images/Selenium_scenar/ebay_change_tab.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p></p>
+                        <a href="images/Playwright_scenar/wiki_change_tab.png"><img src="images/Playwright_scenar/wiki_change_tab.png" height="60"></a>
+                        <a href="images/Playwright_scenar/sams_change_tab.png"><img src="images/Playwright_scenar/sams_change_tab.png" height="60"></a>
+                        <a href="images/Playwright_scenar/ebay_change_tab.png"><img src="images/Playwright_scenar/ebay_change_tab.png" height="60"></a>
+                    </td>   
+                    <td>
+                        <p>No</p>
+                        <a href="images/Chrome_scenar/wiki_change_tab.png"><img src="images/Chrome_scenar/wiki_change_tab.png" height="60"></a>
+                        <a href="images/Chrome_scenar/sams_change_tab.png"><img src="images/Chrome_scenar/sams_change_tab.png" height="60"></a>
+                        <a href="images/Chrome_scenar/ebay_change_tab.png"><img src="images/Chrome_scenar/ebay_change_tab.png" height="60"></a>
+                    </td>
+                    <td>
+                        <p></p>
+                        <a href="images/Suricapture_scenar/wiki_change_tab.png"><img src="images/Suricapture_scenar/wiki_change_tab.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/sams_change_tab.png"><img src="images/Suricapture_scenar/sams_change_tab.png" height="60"></a>
+                        <a href="images/Suricapture_scenar/ebay_change_tab.png"><img src="images/Suricapture_scenar/ebay_change_tab.png" height="60"></a>
+                    </td>
+                </tr>
             </tbody>
         </table>
-        
     <p>
         We've now finished with the recorders. Up until now, we have been content to test the limits of each recorder, but we 
         have never evaluated the quality of the replayer. If a recorder fails, for example with an event or series of events that 
         cannot be recorded by the software, it is obvious that the replay will also fail. For the rest of the study, we will assume 
-        that all recordings are correct and should be replayable. So we will write new scenarios, longer than those in the previous 
-        part, which will be made up of events and scenarios supported by the recorder under test. We will then launch the replay. 
+        that all recordings are correct and should be replayable. So now, we are going to select 10 websites, then for each software
+        create a record on each site which will be recordable, i.e. which will only contain scenarios
+        accepted by the software. We will then launch the replay. 
         If everything goes well, the scenario will be validated. If not, the error will be analysed to understand the flaws in each 
-        replayer.
+        replayer. Nous selectionerons 10 sites parmis le classement officiel des 50 sites les plus consultés (), soit : Google, Wikipedia
+        Yandex, Amazon, Openai, Dzen, Office, Samsung, Microsoft, Ebay, 
     </p>
-
-
     <table>
         <thead>
             <tr>
-                <th>Scenarios</th>
-                <th>How it's tested</th>
+                <th>Site</th>
                 <th>Cypress</th>
+                <th>Selenium</th>
                 <th>Playwright</th>
                 <th>Chrome</th>
                 <th>Suricapture</th>
-
             </tr>
         </thead>
-        
+        <tbody>
+            <tr>
+                <td>Google</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td>Unvalid, bad selector</td>
+                <td>Unvalid, bad selector</td>
+            </tr>
+            <tr>
+                <td>Wikipedia</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td>Unvalid, bad selector</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Yandex</td>
+                <td></td>
+                <td>Unvalid, has not changed tab</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Amazon</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Openai</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Dzen</td>
+                <td></td>
+                <td>Unvalid, has not changed tab</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Office</td>
+                <td></td>
+                <td>Unvalid, change of domain name</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Microsoft</td>
+                <td></td>
+                <td>Valid</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Ebay</td>
+                <td></td>
+                <td>Unvalid, bad selector</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 

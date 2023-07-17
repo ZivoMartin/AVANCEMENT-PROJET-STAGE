@@ -9,8 +9,8 @@ if(recording != null && recording){
 button_start.addEventListener('click', ()=>{
     
     if(button_start.textContent == "start record"){
-        //button_start.textContent = "record in progress";
-        //recording = true;
+        button_start.textContent = "end record";
+        recording = true;
         chrome.windows.create({
             url: 'newrecord.html',
             type: 'popup',
@@ -20,14 +20,15 @@ button_start.addEventListener('click', ()=>{
     }else{
         button_start.textContent = "start record";
         recording = false;
+        chrome.runtime.sendMessage({message: "stop", sender: "popup", receiver: "recorder"});
     }
     window.localStorage.setItem("recording", JSON.stringify(recording))
 })
 
 button_delete_data.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({message: "clear"});
+    chrome.runtime.sendMessage({message: "clear", sender: "popup", receiver: "recorder"});
 })
 
 button_export.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({message: "convert"});
+    chrome.runtime.sendMessage({message: "convert", sender: "popup", receiver: "recorder"});
 })

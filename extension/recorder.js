@@ -1,4 +1,5 @@
 console.log('I am running');
+
 let indice_actions;  //Cette variable represente l'indice de la prochaine action dans le tableau de l'actuel record 
 let actual_word_type; //Cette chaine de charactère représente le mot qui est tapé dans l'actuel input
 let actual_input; 
@@ -8,13 +9,15 @@ let blue_input; //Permet de savoir si actual input est entierment bleu
 let replace; //Booleen qui s'active quand un input est modifié drastiquement (aprés un double clique par exemple) pour prevenir key up d'enregistrer une action de type replace
 let actual_record; //Si un record est en court, il s'agit de l'indice de ce record, sinon il s'agit de l'indice du dernier record 
 let the_record; //Tableau d'action de l'actuel record
-let record_history = JSON.parse(window.localStorage.getItem("record_history"))
+let record_history = JSON.parse(window.localStorage.getItem("record_history"));
 if(record_history == null){
     record_history = [];
 }
 let start = JSON.parse(window.localStorage.getItem("start")); //Booleen qui se transmet par le localstorage permettant de savoir si on doit ou non directement commencer a enregistrer les actions
 if(start == null){
     start = false;
+}else if(start){
+    chrome.runtime.sendMessage({message: "switch", url: window.location.href, sender: "recorder", receiver: "my_record"});
 }
 let indice_record;
 let data = JSON.parse(window.localStorage.getItem("data")); //recupere les datas de l'actuel record s'il n'existe pas, on initialise.
@@ -24,6 +27,7 @@ if(data != null){
     indice_record = 0;
 }
 
+console.log(start);
 
 function reset_variable(){
     indice_actions = 0;
@@ -49,27 +53,28 @@ function convert(){
     if(the_record.length == 0){
         return;
     }
-    txt = "mr = require('mr');\ntest('my_test', () => { mr.goto('"+the_record[0].url+"' );\n";
+    txt = "mr = require('mr');\ntest('my_test', () => { \nmr.goto('"+the_record[0].url+"' );\n";
     for(i = 0; i<the_record.length; i++){
         if(i != 0 && the_record[i].url != the_record[i-1].url){
-            txt += "mr.checkUrlEqual('"+the_record[i].url+"');\n"
+            txt += "mr.checkUrlEqual('"+the_record[i].url+"');\n";
         }
-        txt += "mr.getBy"+the_record[i].type_selecteur+"("+the_record[i].type_target+"{'"+the_record[i].selecteur+"'})."
+        txt += "mr.getBy"+the_record[i].type_selecteur+"("+the_record[i].type_target+"{'"+the_record[i].selecteur+"'}).";
         if(the_record[i].type == "replace"){
             txt += "replace("+the_record[i].new_value+");\n";
         }else if(the_record[i].type == "keydown"){
             if(the_record[i].controle){
-                txt += "type(Control+"+the_record[i].key+");\n"
+                txt += "type(Control+"+the_record[i].key+");\n";
             }else if(the_record[i].alt){
-                txt += "type(Alt+"+the_record[i].key+");\n"
+                txt += "type(Alt+"+the_record[i].key+");\n";
             }else{
                 txt += "type("+the_record[i].key+");\n";
             }
         }else{
-            txt += the_record[i].type+"();\n"
+            txt += the_record[i].type+"();\n";
         }
     }
-    download(txt)
+    txt += "}";
+    download(txt);
 }
 
 function download(txt){
@@ -77,13 +82,14 @@ function download(txt){
     element.setAttribute('href', 'data:text/plain,charset=utf-8,' + encodeURIComponent(txt));
     element.setAttribute('download', 'script');
     element.style.display = 'none';
-    document.body.appendChild(element)
-    element.click()
+    document.body.appendChild(element);
+    element.click();
     document.body.removeChild(element);
 }
 
 function store_event(e){
-    selecteur = get_selecteur(e.target)
+    selecteur = get_selecteur(e.target);
+    console.log("stored");
     the_record[indice_actions] = {type: e.type, selecteur: selecteur.selecteur, type_selecteur: selecteur.type, type_target: e.target.tagName.toLowerCase(), controle: false, alt: false, url: window.location.href};
     if(e.ctrlKey){
         the_record[indice_actions].controle = true;
@@ -92,16 +98,16 @@ function store_event(e){
         the_record[indice_actions].alt = true;
     }
     indice_actions += 1;
-    update_record()
+    update_record();
 }
 
 function get_selecteur(target){
     if(target.id != ""){
         return {selecteur: target.id, type: "id"};
     }else if(target.tagName == "INPUT" && target.placeholder != ""){
-        return {selecteur: target.placeholder, type: "placeholder"}
+        return {selecteur: target.placeholder, type: "placeholder"};
     }else if(target.name != null && target.name != ""){
-        return {selecteur: target.name, type: "name"}   
+        return {selecteur: target.name, type: "name"}; 
     }else if(target.textContent != "" && (target.tagName == "P" || target.tagName == "H1" || target.tagName == "A" )){
         txt = target.textContent;
         if(txt.length <= 100){
@@ -119,7 +125,7 @@ function get_selecteur(target){
 }
 
 function get_arbre(target){
-    result = []
+    result = [];
     elt = target.parentElement;
     k = 0;
     while(elt.tagName != "HTML" && elt.tagName != "BODY"){
@@ -190,6 +196,13 @@ function test_is_recording(){
     return false;
 }
 
+function send_action(){
+    chrome.runtime.sendMessage({message: the_record[indice_actions-1], sender: "recorder", receiver: "my_record"});
+    if(indice_actions > 1 && the_record[indice_actions-1].url != window.location.href){
+        chrome.runtime.sendMessage({message: "switch", url: window.location.href, sender: "recorder", receiver: "my_record"});
+    }
+}
+
 document.addEventListener('click', (e) => {
     if(!start){
         return;
@@ -202,6 +215,7 @@ document.addEventListener('click', (e) => {
         actual_input = null;
     }
     reset_blue();
+    send_action();
 })
 
 document.addEventListener('dblclick', (e) => {
@@ -209,12 +223,16 @@ document.addEventListener('dblclick', (e) => {
         return;
     }
     store_event(e);
+    the_record.splice(the_record.length-3, 2);
+    indice_actions -= 2;
+    console.log(the_record);
     if(e.target.tagName == 'INPUT'){
         blue_word = true;
         blue_input = false;
     }else{
         reset_blue();
     }
+    send_action();
 })
 
 
@@ -227,11 +245,7 @@ document.addEventListener('keyup', (e) => {
         replace = false;
         blue_input = false;
         blue_word = false;
-    }
-    if(e.key == '*'){
-        convert();
-    }else if(e.key == "ù"){
-        
+        send_action();
     }
 })
 document.addEventListener('keydown', (e) => {
@@ -260,6 +274,7 @@ document.addEventListener('keydown', (e) => {
         }
         the_record[indice_actions-1].key = key;
         update_record();
+        send_action();
     }else if(actual_input != null){
         if(key == 'z' || key == 'v' || key == 'a'){
             replace = true;
@@ -271,19 +286,16 @@ document.addEventListener('keydown', (e) => {
 
 
 chrome.runtime.onMessage.addListener(function(msg) {
-    console.log(msg);
     var data = msg.message;    
     if(data == "convert"){
         convert();
     }else if(data == "start"){
-        console.log("hey")
-        if(start){
-            start = false;
-        }else{
-            start = true;
-            create_new_record("record"+indice_record);
-        }
+        start = true;
+        create_new_record(msg.title);
+        chrome.runtime.sendMessage({message: "start_record", url: window.location.href, sender: "recorder", receiver: "my_record"});
         window.localStorage.setItem("start", JSON.stringify(start));
+    }else if(data == "stop"){
+        start = false;
     }else if(data == "clear"){
         clear_data();
     }
