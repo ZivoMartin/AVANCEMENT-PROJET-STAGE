@@ -2,11 +2,13 @@ chrome.runtime.onMessage.addListener(function(message){
     chrome.tabs.query({active: true}, function(tabs){
         console.log(message);
         if(message.sender == "my_record"){
-            let i = 0;
-            while(tabs[i].title == "my record" || tabs[i].title == "popup"){
-                i += 1;
-            }
-            chrome.tabs.sendMessage(tabs[i].id, {message: message.message, title: message.title});  
+            if(message.receiver == "recorder"){
+                let i = 0;
+                while(tabs[i].title == "my record" || tabs[i].title == "popup"){
+                    i += 1;
+                }
+                chrome.tabs.sendMessage(tabs[i].id, {message: message.message, title: message.title});  
+            }  
         }else if(message.sender == "popup"){
             if(message.receiver == "recorder"){
                 let i = 0;
@@ -28,6 +30,5 @@ chrome.runtime.onMessage.addListener(function(message){
                 }
             }
         }
-        
     });
 })      
