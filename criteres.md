@@ -96,3 +96,4 @@ For all criteria, we'll check whether the script obtains them and then whether t
 ## Site used
 
 To carry out the tests, I've decided to use 3 different sites for greater precision, so all 3 must have the necessary functionality to test all the criteria. The difficulty lies in finding 3 pages that have a hover menu, a combo box and a search text field. Most of the other criteria are found on all websites. It's also much more efficient to test on the most popular sites, so I picked the top 3 sites with all the features from the official rankings (https://www.similarweb.com/top-websites/) and tested on them. So, the first one is eBay (https://www.ebay.com/), the second id fandom (https://www.fandom.com/) and the last is cdiscount (https://www.cdiscount.com/), not in the ranking of most popular websites, but still a very popular website.
+

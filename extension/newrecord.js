@@ -1,31 +1,31 @@
-var sub_button = document.getElementById("submit_title");
-sub_button.addEventListener('click', ()=>{
-    let input = document.getElementById("input_title")
-    let title = input.value
+let subButton = document.getElementById("submitTitle");
+
+subButton.addEventListener('click', ()=>{
+    let input = document.getElementById("inputTitle");
     document.getElementById("form").remove(); 
-    chrome.runtime.sendMessage({message: "start", title: title, sender: "my_record", receiver: "recorder"});
+    chrome.runtime.sendMessage({subject: "start", title: input.value, sender: "myRecord"});
 })
 
 chrome.runtime.onMessage.addListener(function(msg) {
     const act = msg.message;
-    let new_act = document.createElement('p');
-    if(act == "switch"){
-        new_act.textContent = "Assert -> url == " + msg.url;
-        document.body.appendChild(new_act);
-    }else if(act == "start_record"){
-        new_act.textContent = "Goto -> " + msg.url;
-        document.body.appendChild(new_act);
-    }else if(act.type_target != null){
-        new_act.textContent = act.type;
-        if(act.type == "dblclick"){
+    let newAct = document.createElement('p');
+    if(act === "switch"){
+        newAct.textContent = "Assert -> url == " + msg.url;
+        document.body.appendChild(newAct);
+    }else if(act === "startRecord"){
+        newAct.textContent = "Goto -> " + msg.url;
+        document.body.appendChild(newAct);
+    }else if(act.typeTarget != null){
+        newAct.textContent = act.type;
+        if(act.type === "dblclick"){
             let actions = document.querySelectorAll('p');
-            const len = actions.length
+            const len = actions.length;
             actions[len-1].remove();
             actions[len-2].remove();
-        }else if(act.type == "keydown"){
-            new_act.textContent += " (" + act.key + ") "
+        }else if(act.type === "keydown"){
+            newAct.textContent += " (" + act.key + ") ";
         }
-        new_act.textContent += " -> " + act.type_target
-        document.body.appendChild(new_act);
+        newAct.textContent += " -> " + act.typeTarget;
+        document.body.appendChild(newAct);
     }
 });

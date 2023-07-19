@@ -1,16 +1,20 @@
-button_start = document.getElementById('button_mr');
-button_delete_data = document.getElementById('button_delete');
-button_export = document.getElementById('button_export')
+const UNKNOW = null;
+const IS_RECORDING = true;
+const NOT_RECORDING = false;
 
+buttonStart = document.getElementById('buttonMr');
+buttonDeleteData = document.getElementById('buttonDelete');
+buttonExport = document.getElementById('buttonExport');
 let recording = JSON.parse(window.localStorage.getItem("recording"));
-if(recording != null && recording){
-    button_start.textContent = "end record"
+
+if(recording != UNKNOW && recording === IS_RECORDING){
+    buttonStart.textContent = "end record";
 }
-button_start.addEventListener('click', ()=>{
-    
-    if(button_start.textContent == "start record"){
-        button_start.textContent = "end record";
-        recording = true;
+
+buttonStart.addEventListener('click', ()=>{
+    if(buttonStart.textContent === "start record"){
+        buttonStart.textContent = "end record";
+        recording = IS_RECORDING;
         chrome.windows.create({
             url: 'newrecord.html',
             type: 'popup',
@@ -18,17 +22,17 @@ button_start.addEventListener('click', ()=>{
             height: 600
         });
     }else{
-        button_start.textContent = "start record";
-        recording = false;
-        chrome.runtime.sendMessage({message: "stop", sender: "popup", receiver: "recorder"});
+        buttonStart.textContent = "start record";
+        recording = NOT_RECORDING;
+        chrome.runtime.sendMessage({subject: "stop", sender: "popup"});
     }
-    window.localStorage.setItem("recording", JSON.stringify(recording))
+    window.localStorage.setItem("recording", JSON.stringify(recording));
 })
 
-button_delete_data.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({message: "clear", sender: "popup", receiver: "recorder"});
+buttonDeleteData.addEventListener("click", ()=>{
+    chrome.runtime.sendMessage({subject: "clear", sender: "popup"});
 })
 
-button_export.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({message: "convert", sender: "popup", receiver: "recorder"});
+buttonExport.addEventListener("click", ()=>{
+    chrome.runtime.sendMessage({subject: "convert", sender: "popup"});
 })
