@@ -866,7 +866,7 @@
                 <td>Unvalid, change of domain name</td>
                 <td>Valid</td>
                 <td>Unvalid, change of domain name</td>
-                <td>Unvalid, change of domain name</td>
+                <td>Unvalid, bad selector</td>
             </tr>
             <tr>
                 <td>Samsung</td>
@@ -889,10 +889,25 @@
                 <td>Unvalid, bad script</td>
                 <td>Unvalid, bad selector</td>
                 <td>Valid</td>
-                <td>Unvalid, filling form problem</td>
-                <td>Unvalid, bad selector</td>
+                <td>Valid</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Total valid</td>
+                <td>0</td>
+                <td>6</td>
+                <td>6</td>
+                <td>4</td>
+                <td>5</td>
             </tr>
         </tbody>
     </table>
 
-    
+<p>
+    So let's analyse these results. Cypress has a recorder that is far too random, as we saw in the previous section. Very few scenarios are 
+    taken into account to be able to observe any results. As far as Selenium is concerned, it finished equal first with Playwright. There was 
+    only one CSS selector error, making it the best selector choice algorithm in the tests carried out. On the other hand, Selenium only managed 
+    to maintain the replay in a new tab once. For Playwright, the errors are more balanced: 2 bad selectors and a popup management problem, but it 
+    didn't support Dzen's tab change. Chrome had three bad selectors, making it the worst performer in these tests in terms of its selection 
+    algorithm. Lastly, Suricapture, like Playwright, has generally balanced errors.
+</p>
