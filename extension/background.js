@@ -2,9 +2,11 @@ const UNKNOW = null;
 const IS_RECORDING = true;
 const NOT_RECORDING = false;
 
+const BACKGROUND = "background";
 const POPUP = "popup";
 const MY_RECORD = "myRecord";
 const RECORDER = "recorder";
+const HISTO_RECORD = "histoRecord"
 
 const DELETE_LAST_CHAR = "deleteLastChar";
 const SWITCH_INPUT = "switchInput";
@@ -13,7 +15,10 @@ const CONVERT = "convert";
 const START = "start";
 const STOP = "stop";
 const CLEAR = "clear";
-const SWITCH_URL = "switchUrl"
+const SWITCH_URL = "switchContentUrl";
+const START_STATUS = "askStartStatus";
+const GIVE_HISTO = "giveHisto";
+const DELETE_RECORD = "deleteRecord"
 
 let record;
 let actualRecord;
@@ -21,25 +26,30 @@ let recordHistory = [];
 let start = NOT_RECORDING; 
 let actualInput; 
 let urlContentPage;
+let idNewRec;
 
-
-
-chrome.runtime.onMessage.addListener(function(message){
-    chrome.tabs.query({active: true}, function(tabs){
+chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
+    if(message.receiver === BACKGROUND){
         if(message.sender === MY_RECORD){
             if(message.subject === START){
-                createNewRecord(message.title);
+                chrome.tabs.query({active: true}, (tabs)=>{
+                    createNewRecord(message.title, tabs)
+                });
                 start = IS_RECORDING;
             }else if(message.subject === STOP){
                 stopRecord();
             }
         }else if(message.sender === POPUP){
             if(message.subject === CONVERT){
-                sendConvertMessage(tabs);
+                chrome.tabs.query({active: true}, (tabs)=>{
+                    sendConvertMessage(tabs);
+                });
             }else if(message.subject === STOP){
                 stopRecord();
             }else if(message.subject === CLEAR){
                 clearData();
+            }else if(message.subject === START_STATUS){
+                sendResponse({status: start, sender: "background", receiver: "popup"});
             }
         }else if(message.sender === RECORDER){
             if(start === IS_RECORDING){
@@ -49,16 +59,22 @@ chrome.runtime.onMessage.addListener(function(message){
                     deleteLastChar();
                 }else if(message.subject === SWITCH_INPUT){
                     actualInput = message.newInput;
+                }else if(message.subject === SWITCH_URL){
+                    urlContentPage = message.url;
+                    if(start === IS_RECORDING){
+                        switchUrl(urlContentPage);
+                    }
                 }
             }
-            if(message.subject === SWITCH_URL){
-                urlContentPage = message.url;
-                if(start === IS_RECORDING){
-                    switchUrl(message.url);
-                }
+        }else if(message.sender === HISTO_RECORD){
+            if(message.subject === GIVE_HISTO){
+                sendResponse({tabHisto: recordHistory, sender: "background", receiver: "histo"});
+            }else if(message.subject === DELETE_RECORD){
+                console.log(recordHistory);
+                recordHistory.splice(message.indice, 1);
             }
         }
-    });
+    }
 });     
 
 
@@ -66,10 +82,17 @@ function pushNewEvent(type, event){
     if(type === "keydown" || type === "replace" || type === "click"){
         record.push(event);
     }else if(type === "dblclick"){
-        record.splice(record.length-3, 2);
+        record.splice(record.length-2, 2);
         record.push(event);
     }
-    console.log(type);
+    if(record.length === 1){
+        chrome.tabs.sendMessage(idNewRec, {subject: "newEvent", event: "startRecord", url: event.url, sender: "background", receiver: "newRecord"})
+        .then(() => {
+            chrome.tabs.sendMessage(idNewRec, {subject: "newEvent", event: event, sender: "background", receiver: "newRecord"})
+          })
+    }else{
+        chrome.tabs.sendMessage(idNewRec, {subject: "newEvent", event: event, sender: "background", receiver: "newRecord"});
+    }
 }
 
 function deleteLastChar(){
@@ -83,11 +106,12 @@ function deleteLastChar(){
 }
 
 function stopRecord(){
-    start = NOT_RECORDING;
-    start = NOT_RECORDING;
-    pushRecord(record, actualRecord);
-    record = UNKNOW;
-    actualRecord = UNKNOW;
+    if(start === IS_RECORDING){
+        start = NOT_RECORDING;
+        pushRecord(record, actualRecord);
+        record = UNKNOW;
+        actualRecord = UNKNOW;
+    }
 }
 
 function pushRecord(record, title){
@@ -98,9 +122,10 @@ function pushRecord(record, title){
     }
 }
 
-function createNewRecord(title){
+function createNewRecord(title, tabs){
     actualRecord = title;   
     record = [];
+    idNewRec = findIdNewRec(tabs);
 }
 
 async function sendConvertMessage(tabs){
@@ -108,8 +133,9 @@ async function sendConvertMessage(tabs){
     while(tabs[i].url != record[record.length - 1].url && i < tabs.length){
         i += 1;
     }
-    await chrome.tabs.sendMessage(tabs[i].id, {subject: "download", txt: convert(record), sender: "background"});
+    await chrome.tabs.sendMessage(tabs[i].id, {subject: "download", txt: convert(record), sender: "background", receiver: "recorder"});
 }
+
 
 function clearData(){
     record = UNKNOW;
@@ -120,7 +146,15 @@ function clearData(){
 }
 
 function switchUrl(newUrl){
-    return newUrl;
+    chrome.tabs.sendMessage(idNewRec, {subject: "newEvent", event: "switch", url: newUrl, sender: "background", receiver: "newRecord"})
+}
+
+function findIdNewRec(tabs){
+    let i = 0;
+    while(tabs[i].title != "New record"){
+        i += 1;
+    }
+    return tabs[i].id;
 }
 
 function convert(record){

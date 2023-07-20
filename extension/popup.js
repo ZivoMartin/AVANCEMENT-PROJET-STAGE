@@ -3,18 +3,19 @@ const IS_RECORDING = true;
 const NOT_RECORDING = false;
 
 buttonStart = document.getElementById('buttonMr');
-buttonDeleteData = document.getElementById('buttonDelete');
+buttonHisto = document.getElementById('buttonHisto');
 buttonExport = document.getElementById('buttonExport');
-let recording = JSON.parse(window.localStorage.getItem("recording"));
 
-if(recording != UNKNOW && recording === IS_RECORDING){
-    buttonStart.textContent = "end record";
-}
+
+chrome.runtime.sendMessage({subject: "askStartStatus", sender: "popup", receiver: "background"}, (response)=>{
+    if(response.status === IS_RECORDING){
+        buttonStart.textContent = "end record";
+    }
+});
 
 buttonStart.addEventListener('click', ()=>{
     if(buttonStart.textContent === "start record"){
         buttonStart.textContent = "end record";
-        recording = IS_RECORDING;
         chrome.windows.create({
             url: 'newrecord.html',
             type: 'popup',
@@ -23,16 +24,25 @@ buttonStart.addEventListener('click', ()=>{
         });
     }else{
         buttonStart.textContent = "start record";
-        recording = NOT_RECORDING;
-        chrome.runtime.sendMessage({subject: "stop", sender: "popup"});
+        chrome.runtime.sendMessage({subject: "stop", sender: "popup", receiver: "background"});
     }
-    window.localStorage.setItem("recording", JSON.stringify(recording));
 })
 
-buttonDeleteData.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({subject: "clear", sender: "popup"});
+buttonHisto.addEventListener("click", ()=>{
+    chrome.windows.create({
+        url: 'historique.html',
+        type: 'popup',
+        width: 700,
+        height: 600
+    });
 })
 
 buttonExport.addEventListener("click", ()=>{
-    chrome.runtime.sendMessage({subject: "convert", sender: "popup"});
+    chrome.runtime.sendMessage({subject: "convert", sender: "popup", receiver: "background"});
 })
+
+
+
+
+
+

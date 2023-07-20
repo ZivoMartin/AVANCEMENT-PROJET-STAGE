@@ -1,7 +1,5 @@
-console.log('I am running');
-
 const UNKNOW = null;
-chrome.runtime.sendMessage({subject: "switchContentUrl", url: window.location.href, sender: "recorder"});
+chrome.runtime.sendMessage({subject: "switchContentUrl", url: window.location.href, sender: "recorder", receiver: "background"});
 
 let actualInput; 
 let inElt; 
@@ -31,12 +29,12 @@ function pushEvent(e){
         }
         object.key = e.key;
     }
-    chrome.runtime.sendMessage({subject: "newEvent", sender: "recorder", event: object});
+    chrome.runtime.sendMessage({subject: "newEvent", sender: "recorder", receiver: "background", event: object});
 }
 
 function pushTheReplace(){
     let value = document.querySelector('input[name="' + actualInput + '"]').value;
-    chrome.runtime.sendMessage({subject: "newEvent", sender: "recorder", event: {type: "replace", selecteur: actualInput, typeSelecteur: "name", typeTarget: "input", controle: false, alt: false, url: window.location.href, input: actualInput, newValue: value}});
+    chrome.runtime.sendMessage({subject: "newEvent", sender: "recorder", receiver: "background", event: {type: "replace", selecteur: actualInput, typeSelecteur: "name", typeTarget: "input", controle: false, alt: false, url: window.location.href, input: actualInput, newValue: value}});
 }
 
 function getSelecteur(target){
@@ -83,10 +81,10 @@ function resetBlue(){
 document.addEventListener('click', (e) => {
     if(e.target.tagName === "INPUT"){
         actualInput = e.target.name;
-        chrome.runtime.sendMessage({subject: "switchInput", sender: "recorder", newInput: actualInput});
+        chrome.runtime.sendMessage({subject: "switchInput", sender: "recorder", receiver: "background", newInput: actualInput});
     }else if(actualInput != UNKNOW){
         actualInput = UNKNOW;
-        chrome.runtime.sendMessage({subject: "switchInput", sender: "recorder", newInput: UNKNOW});
+        chrome.runtime.sendMessage({subject: "switchInput", sender: "recorder", receiver: "background", newInput: UNKNOW});
     }
     resetBlue();
     pushEvent(e);
@@ -119,7 +117,7 @@ document.addEventListener('keydown', (e) => {
             replace = true;
             return;
         }else if(key === "Backspace"){
-            chrome.runtime.sendMessage({subject: "deleteLastChar", sender: "recorder"});
+            chrome.runtime.sendMessage({subject: "deleteLastChar", sender: "recorder", receiver: "background"});
             return;
         }
     }
@@ -131,8 +129,10 @@ document.addEventListener('keydown', (e) => {
 
 
 chrome.runtime.onMessage.addListener(function(message) {
-    if(message.subject === "download" && message.sender === "background"){
-        download(message.txt);
+    if(message.sender === "background" && message.receiver === "recorder"){
+        if(message.subject === "download" && message.sender === "background"){
+            download(message.txt);
+        }
     }
 });
 

@@ -1,0 +1,30 @@
+
+
+h1{
+    padding-bottom: 40px;
+}
+
+.record {
+    overflow: hidden;
+    width: 100%;
+}
+
+.containerLeft{
+    float: left;
+}
+
+.containerRight{
+    float: right;
+}
+
+.divLeftElement{
+    display: inline-block;
+}
+
+.divRightElement{
+    display: inline-block;
+}
+
+#title{
+    padding-right: 20px;
+}
