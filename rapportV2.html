@@ -21,12 +21,21 @@
         Cypress, Selenium, Playwright and Chrome, and to determine the strengths and weaknesses of each. 
     </p>
     <div class="img_div">
-        <img src="images/cypress.jpg" height="60" class="cy">    
-        <img src="images/selenium.jpg" height="60" class="se">
-        <img src="images/playwright.jpg" height="60" class="pl">
-        <img src="images/chrome.jpg" height="60" class="ch">
-        <img src="images/suricapt.png" height="60" class="sr">
+        <div class="container" onmouseover="showText()" onmouseout="hideText()"><img src="images/cypress.jpg" height="60"><div class="hover-text">Version: 1.1.0</div></div>
+        <div class="container" onmouseover="showText()" onmouseout="hideText()"><img src="images/selenium.jpg" height="60"><div class="hover-text">Version: 3.17.2</div></div>
+        <div class="container" onmouseover="showText()" onmouseout="hideText()"><img src="images/playwright.jpg" height="60"><div class="hover-text">Version: 1.36.1</div></div>
+        <div class="container" onmouseover="showText()" onmouseout="hideText()"><img src="images/chrome.jpg" height="60"><div class="hover-text">Version: 114.0.5735.199 (Build officiel) (64 bits)</div></div>
+        <div class="container" onmouseover="showText()" onmouseout="hideText()"><img src="images/suricapt.png" height="60"><div class="hover-text">Version: 0.4.213</div></div>
     </div>
+    <script>
+        function showText() {
+          document.getElementById("helloText").style.opacity = "1";
+        }
+    
+        function hideText() {
+          document.getElementById("helloText").style.opacity = "0";
+        }
+    </script>
     <div id="solo-event">
         <p>In this study, we first selected JavaScript events divided into two categories: those in the "mouse events" class and those in the "keyboard events" class.
             This table compares the management of keyboard and mouse events for each software. Let's add that we separate keyboard events into two categories: 
@@ -780,8 +789,11 @@
         create a record on each site which will be recordable, i.e. which will only contain scenarios
         accepted by the software. We will then launch the replay. 
         If everything goes well, the scenario will be validated. If not, the error will be analysed to understand the flaws in each 
-        replayer. Nous selectionerons 10 sites parmis le classement officiel des 50 sites les plus consultés (https://www.similarweb.com/top-websites/), soit : Google, Wikipedia
-        Yandex, Amazon, Openai, Dzen, Office, Samsung, Microsoft, Ebay.How will the tests work? As it said earlier
+        replayer. We will select 10 sites from the official ranking of the 50 most visited sites (https://www.similarweb.com/top-websites/): 
+        Google, Wikipedia Yandex, Amazon, Openai, Dzen, Office, Samsung, Microsoft, Ebay.
+    </p>
+    <p>
+        How will the tests work? As it said earlier
         we will only test what is recordable, for example we will not use ebay hovers on a test with Selenium. However,
         as Suricapture knows how to use them, we won't mind when we test Suricapture on ebay, we'll be able to
         use the hovers. Next, it should be noted that on 3 sites there will be a tab change (i.e.
@@ -802,81 +814,81 @@
         <tbody>
             <tr>
                 <td>Google</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Unvalid, bad selector</td>
                 <td>Unvalid, bad selector</td>
                 <td>Unvalid, bad selector</td>
             </tr>
             <tr>
                 <td>Wikipedia</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Unvalid, bad selector</td>
                 <td>Unvalid, filling form problem</td>
             </tr>
             <tr>
                 <td>Yandex</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Unvalid, has not changed tab</td>
-                <td></td>
+                <td>Unvalid, popup page</td>
                 <td>Unvalid, has not changed tab</td>
                 <td>Valid</td>
             </tr>
             <tr>
                 <td>Amazon</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Valid</td>
                 <td>Valid</td>
             </tr>
             <tr>
                 <td>Openai</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Unvalid, bad selector</td>
                 <td>Unvalid, has not changed tab</td>
             </tr>
             <tr>
                 <td>Dzen</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Unvalid, has not changed tab</td>
-                <td></td>
+                <td>Unvalid, has not changed tab</td>
                 <td>Unvalid, has not changed tab</td>
                 <td>Unvalid, has not changed tab</td>
             </tr>
             <tr>
                 <td>Office</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Unvalid, change of domain name</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Unvalid, change of domain name</td>
                 <td>Unvalid, change of domain name</td>
             </tr>
             <tr>
                 <td>Samsung</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Unvalid, bad selector</td>
                 <td>Valid</td>
                 <td>Valid</td>
             </tr>
             <tr>
                 <td>Microsoft</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Valid</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Valid</td>
                 <td>Valid</td>
             </tr>
             <tr>
                 <td>Ebay</td>
-                <td></td>
+                <td>Unvalid, bad script</td>
                 <td>Unvalid, bad selector</td>
-                <td></td>
+                <td>Valid</td>
                 <td>Unvalid, filling form problem</td>
                 <td>Unvalid, bad selector</td>
             </tr>

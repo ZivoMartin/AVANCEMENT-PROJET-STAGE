@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener((message) => {
                     const len = actions.length;
                     actions[len-1].remove();
                     actions[len-2].remove();
-                }else if(act.type === "keydown"){
+                }else if(act.type === "keydown"){   
                     newAct.textContent += " (" + act.key + ") ";
                 }
                 newAct.textContent += " -> " + act.typeTarget;
