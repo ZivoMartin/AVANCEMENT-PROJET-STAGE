@@ -21,6 +21,9 @@ function download(txt){
 function pushEvent(e){
     const selecteur = getSelecteur(e.target);
     let object = {type: e.type, selecteur: selecteur.selecteur, typeSelecteur: selecteur.type, typeTarget: e.target.tagName.toLowerCase(), controle: e.ctrlKey, alt: e.altKey, url: window.location.href};
+    if(object.typeTarget === 'a'){
+        object.typeTarget = 'link';
+    }
     if(object.type === "keydown"){
         if(actualInput != UNKNOW){
             object.input = actualInput;

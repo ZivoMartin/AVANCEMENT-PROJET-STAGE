@@ -11,7 +11,7 @@ const HISTO_RECORD = "histoRecord"
 const DELETE_LAST_CHAR = "deleteLastChar";
 const SWITCH_INPUT = "switchInput";
 const NEW_EVENT = "newEvent";
-const CONVERT = "convert";
+const EXPORT = "export";
 const START = "start";
 const STOP = "stop";
 const CLEAR = "clear";
@@ -40,11 +40,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
                 stopRecord();
             }
         }else if(message.sender === POPUP){
-            if(message.subject === CONVERT){
-                chrome.tabs.query({active: true}, (tabs)=>{
-                    sendConvertMessage(tabs);
-                });
-            }else if(message.subject === STOP){
+            if(message.subject === STOP){
                 stopRecord();
             }else if(message.subject === CLEAR){
                 clearData();
@@ -54,6 +50,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
         }else if(message.sender === RECORDER){
             if(start === IS_RECORDING){
                 if(message.subject === NEW_EVENT){
+                    console.log("OUI");
                     pushNewEvent(message.event.type, message.event);
                 }else if(message.subject === DELETE_LAST_CHAR){
                     deleteLastChar();
@@ -70,8 +67,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
             if(message.subject === GIVE_HISTO){
                 sendResponse({tabHisto: recordHistory, sender: "background", receiver: "histo"});
             }else if(message.subject === DELETE_RECORD){
-                console.log(recordHistory);
                 recordHistory.splice(message.indice, 1);
+            }else if(message.subject === EXPORT){
+                chrome.tabs.query({active: true}, (tabs)=>{
+                    sendConvertMessage(tabs, recordHistory[message.indice].record, recordHistory[message.indice].title);
+                });
             }
         }
     }
@@ -93,6 +93,7 @@ function pushNewEvent(type, event){
     }else{
         chrome.tabs.sendMessage(idNewRec, {subject: "newEvent", event: event, sender: "background", receiver: "newRecord"});
     }
+    console.log(record);
 }
 
 function deleteLastChar(){
@@ -128,12 +129,12 @@ function createNewRecord(title, tabs){
     idNewRec = findIdNewRec(tabs);
 }
 
-async function sendConvertMessage(tabs){
+async function sendConvertMessage(tabs, theExportedRecord, title){
     let i = 0;
-    while(tabs[i].url != record[record.length - 1].url && i < tabs.length){
+    while((tabs[i].title === "My records" || tabs[i].title === "Popup" || tabs[i].title === "New record" ) && i < tabs.length){
         i += 1;
     }
-    await chrome.tabs.sendMessage(tabs[i].id, {subject: "download", txt: convert(record), sender: "background", receiver: "recorder"});
+    await chrome.tabs.sendMessage(tabs[i].id, {subject: "download", txt: convert(theExportedRecord, title), sender: "background", receiver: "recorder"});
 }
 
 
@@ -157,30 +158,32 @@ function findIdNewRec(tabs){
     return tabs[i].id;
 }
 
-function convert(record){
+function convert(record, title){
     if(record.length === 0){
         return;
     }
-    txt = "mr = require('mr');\ntest('myTest', () => { \nmr.goto('"+record[0].url+"' );\n";
+    txt = "import { test, expect } from '@playwright/test\n"
+    txt += "test('"+title+"', () => { \n"
+    txt += "\tawait page.goto('"+record[0].url+"');\n";
     for(i = 0; i<record.length; i++){
-        if(i != 0 && record[i].url != record[i-1].url){
-            txt += "mr.checkUrlEqual('"+record[i].url+"');\n";
-        }
-        txt += "mr.getBy"+record[i].typeSelecteur+"("+record[i].typeTarget+"{'"+record[i].selecteur+"'}).";
+        // if(i != 0 && record[i].url != record[i-1].url){
+        //     txt += "mr.checkUrlEqual('"+record[i].url+"');\n";
+        // }
+        txt += "\tawait page.getByRole('"+record[i].typeTarget+"', {name: "+record[i].selecteur+"}).";
         if(record[i].type === "replace"){
-            txt += "replace("+record[i].newValue+");\n";
+            txt += "fill("+record[i].newValue+");\n";
         }else if(record[i].type === "keydown"){
             if(record[i].controle){
-                txt += "type(Control+"+record[i].key+");\n";
+                txt += "press(Control+"+record[i].key+");\n";
             }else if(record[i].alt){
-                txt += "type(Alt+"+record[i].key+");\n";
+                txt += "press(Alt+"+record[i].key+");\n";
             }else{
-                txt += "type("+record[i].key+");\n";
+                txt += "press("+record[i].key+");\n";
             }
         }else{
             txt += record[i].type+"();\n";
         }
     }
-    txt += "}";
+    txt += "});";
     return txt;
 }

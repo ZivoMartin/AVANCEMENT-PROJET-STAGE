@@ -10,6 +10,7 @@ chrome.runtime.sendMessage({subject: "giveHisto", sender: "histoRecord", receive
         initRecButton(divLeft, response.tabHisto[i].title);
         initButtonScript(divLeft, response.tabHisto[i].record);
         initReplayButton(divRight);
+        initExportButton(divRight, i);
         initDeleteRecordButton(divRight, i);
     }
 })
@@ -55,13 +56,28 @@ function initReplayButton(div){
 function initDeleteRecordButton(div, i){
     let img = document.createElement('img');
     img.height = 20;
-    img.src = "bin.png";
+    img.src = "cssAndimg/bin.png";
     let deleteRecordButton = document.createElement('button');
-    deleteRecordButton.appendChild(img)
+    deleteRecordButton.appendChild(img);
+    deleteRecordButton.className = "divRightElement";
     deleteRecordButton.addEventListener('click', ()=>{
         deleteThisReplay(i);
     })
     div.appendChild(deleteRecordButton);
+}
+
+function initExportButton(div, i){
+    let exportButton = document.createElement('button');
+    exportButton.textContent = "Export";
+    exportButton.className = "divRightElement";
+    exportButton.addEventListener('click', ()=>{
+        exportScript(i);
+    })
+    div.appendChild(exportButton);
+}
+
+function exportScript(i){
+    chrome.runtime.sendMessage({subject: "export", indice: i, sender: "histoRecord", receiver: "background"});
 }
 
 function eventScriptButton(record, div){
