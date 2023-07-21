@@ -1,6 +1,4 @@
 body {
-    margin: auto;
-    width: 1200px;
     font-family: Arial, sans-serif;
 }
 table{
@@ -18,17 +16,17 @@ table{
 }
 
 #solo-event{
+    width: 1200px;
     margin: 70px auto;
 }
 
 thead tr{
     background-color: midnightblue;
     color: #fff;
-    text-align: left;
 }
 
 th, td{
-    padding: 15px 20px;
+    padding: 15px 15px;
     text-align: center;
 }
 
@@ -41,12 +39,15 @@ tbody tr:nth-child(even){
 }
 
 h1 {
+    
     text-align: center;
     padding-bottom: 20px;
     color: #333;
     text-decoration: underline;
 }
 h2{
+    margin: auto;
+    width: 1200px;
     padding-bottom: 20px;
     color: #333;
     text-decoration: underline;
@@ -60,6 +61,7 @@ h2{
 .img_div {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
   
 .img_div img {
@@ -76,7 +78,7 @@ a{
 }
 
 td img{
-    width: 200px;
+    width: 180px;
 }
 
 .container {
@@ -98,5 +100,10 @@ td img{
 }
 
 .container:hover .hover-text {
-opacity: 1;
+    opacity: 1;
+}
+
+.paragraphe{
+    margin: auto;
+    width: 1200px;
 }
