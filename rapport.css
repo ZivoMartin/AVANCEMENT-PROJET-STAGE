@@ -59,6 +59,8 @@ h2{
 }
 
 .img_div {
+    margin: auto;
+    width: 1200px;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
